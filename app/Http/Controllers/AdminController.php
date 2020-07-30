@@ -13,7 +13,7 @@ class AdminController extends Controller
         if ($request->isMethod('post')) {
             # code...
             $data = $request->input();
-            dd($data); die;
+            // dd($data); die;
             if (Auth::attempt(['email' => $data['email'], 'password' => $data['password'],'admin'=>'1'])) {
                 # code...
                 echo "Success"; die;
