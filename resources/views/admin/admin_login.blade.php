@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/backend_images/favicon.png')}}">
-    <title>Matrix Template - The Ultimate Multipurpose admin template</title>
+    <title>Admin Panal</title>
     <!-- Custom CSS -->
     <link href="{{ asset('css/backend_css/style.min.css') }}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -45,7 +45,7 @@
                         <span class="db"><img src="{{asset('images/backend_images/logo.png')}}" alt="logo" /></span>
                     </div>
                     <!-- Form -->
-                    <form class="form-horizontal m-t-20" id="loginform" action="index.html">
+                    <form class="form-horizontal m-t-20" id="loginform" method="post" action="{{url('admin')}}"> {{csrf_feild}}
                         <div class="row p-b-30">
                             <div class="col-12">
                                 <div class="input-group mb-3">
