@@ -287,10 +287,10 @@
                                                 </label>
                                             </div>
                                             <ul class="list-style-none assignedto">
-                                                <li class="assignee"><img class="rounded-circle" width="40" src="assets/images/users/1.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Steave"></li>
-                                                <li class="assignee"><img class="rounded-circle" width="40" src="assets/images/users/2.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Jessica"></li>
-                                                <li class="assignee"><img class="rounded-circle" width="40" src="assets/images/users/3.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Priyanka"></li>
-                                                <li class="assignee"><img class="rounded-circle" width="40" src="assets/images/users/4.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Selina"></li>
+                                                <li class="assignee"><img class="rounded-circle" width="40" src="{{asset('images/backend_images/users/1.jpg')}}" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Steave"></li>
+                                                <li class="assignee"><img class="rounded-circle" width="40" src="{{asset('images/backend_images/users/2.jpg')}}" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Jessica"></li>
+                                                <li class="assignee"><img class="rounded-circle" width="40" src="{{asset('images/backend_images/users/3.jpg')}}" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Priyanka"></li>
+                                                <li class="assignee"><img class="rounded-circle" width="40" src="{{asset('images/backend_images/users/4.jpg')}}" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Selina"></li>
                                             </ul>
                                         </li>
                                         <li class="list-group-item todo-item" data-role="task">
@@ -310,8 +310,8 @@
                                                 </label>
                                             </div>
                                             <ul class="list-style-none assignedto">
-                                                <li class="assignee"><img class="rounded-circle" width="40" src="assets/images/users/3.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Priyanka"></li>
-                                                <li class="assignee"><img class="rounded-circle" width="40" src="assets/images/users/4.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Selina"></li>
+                                                <li class="assignee"><img class="rounded-circle" width="40" src="{{asset('images/backend_images/users/3.jpg')}}" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Priyanka"></li>
+                                                <li class="assignee"><img class="rounded-circle" width="40" src="{{asset('images/backend_images/users/4.jpg')}}" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Selina"></li>
                                             </ul>
                                         </li>
                                         <li class="list-group-item todo-item" data-role="task">
@@ -331,8 +331,8 @@
                                                 </label>
                                             </div>
                                             <ul class="list-style-none assignedto">
-                                                <li class="assignee"><img class="rounded-circle" width="40" src="assets/images/users/3.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Priyanka"></li>
-                                                <li class="assignee"><img class="rounded-circle" width="40" src="assets/images/users/4.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Selina"></li>
+                                                <li class="assignee"><img class="rounded-circle" width="40" src="{{asset('images/backend_images/users/3.jpg')}}" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Priyanka"></li>
+                                                <li class="assignee"><img class="rounded-circle" width="40" src="{{asset('images/backend_images/users/4.jpg')}}" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Selina"></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -508,7 +508,7 @@
                                         </li>
                                         <!--chat Row -->
                                         <li class="chat-item">
-                                            <div class="chat-img"><img src="{{asset('/images/users/3.jpg')}}" alt="user"></div>
+                                            <div class="chat-img"><img src="{{asset('images/backend_images/users/3.jpg')}}" alt="user"></div>
                                             <div class="chat-content">
                                                 <h6 class="font-medium">Angelina Rhodes</h6>
                                                 <div class="box bg-light-info">Well we have good budget for the project</div>
