@@ -91,7 +91,7 @@
                     </div>
                     <div class="row m-t-20">
                         <!-- Form -->
-                        <form class="col-12" method="post" action={{url('admin')}}> {{ csrf_field()}}
+                            <form class="col-12" method="post" action={{url('admin')}}> {{ csrf_field()}}
                             <!-- email -->
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
