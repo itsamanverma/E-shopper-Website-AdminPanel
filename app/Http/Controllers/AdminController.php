@@ -16,7 +16,8 @@ class AdminController extends Controller
             // dd($data); die;
             if (Auth::attempt(['email' => $data['email'], 'password' => $data['password'],'admin'=>'1'])) {
                 # code...
-                echo "Success"; die;
+                // echo "Success"; die;
+                return redirect('/admin/dashboard');
             }else{
                 echo "Failed"; die;
             }
