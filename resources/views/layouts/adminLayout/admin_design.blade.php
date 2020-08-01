@@ -14,6 +14,10 @@
     <!-- Custom CSS -->
     <link href="{{asset('js/backend_js/libs/flot/css/float-chart.css')}}" rel="stylesheet">
     <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{{asset('js/backend_js/libs/select2/dist/css/select2.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('js/backend_js/libs/jquery-minicolors/jquery.minicolors.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('js/backend_js/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('js/backend_js/libs/quill/dist/quill.snow.css')}}">
     <link href="{{asset('css/backend_css/style.min.css')}}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -69,6 +73,62 @@
     <script src="{{asset('js/backend_js/libs/flot.tooltip/js/jquery.flot.tooltip.min.js')}}"></script>
     <script src="{{asset('js/backend_js/pages/chart/chart-page-init.js')}}"></script>
 
+    <!-- This basic Form Page JS -->
+    <script src="{{asset('js/backend_js/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js')}}"></script>
+    <script src="{{asset('js/backend_js/pages/mask/mask.init.js')}}"></script>
+    <script src="{{asset('js/backend_js/libs/select2/dist/js/select2.full.min.js')}}"></script>
+    <script src="{{asset('js/backend_js/libs/select2/dist/js/select2.min.js')}}"></script>
+    <script src="{{asset('js/backend_js/libs/jquery-asColor/dist/jquery-asColor.min.js')}}"></script>
+    <script src="{{asset('js/backend_js/libs/jquery-asGradient/dist/jquery-asGradient.js')}}"></script>
+    <script src="{{asset('js/backend_js/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js')}}"></script>
+    <script src="{{asset('js/backend_js/libs/jquery-minicolors/jquery.minicolors.min.js')}}"></script>
+    <script src="{{asset('js/backend_js/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{asset('js/backend_js/libs/quill/dist/quill.min.js')}}"></script>
+    {{-- <script src="{{asset('js/backend_js/libs/jquery-validation/jquery.validate.min.js')}}"></script>  --}}
+
+    <script>
+        //***********************************//
+        // For select 2
+        //***********************************//
+        $(".select2").select2();
+
+        /*colorpicker*/
+        $('.demo').each(function() {
+        //
+        // Dear reader, it's actually very easy to initialize MiniColors. For example:
+        //
+        //  $(selector).minicolors();
+        //
+        // The way I've done it below is just for the demo, so don't get confused
+        // by it. Also, data- attributes aren't supported at this time...they're
+        // only used for this demo.
+        //
+        $(this).minicolors({
+                control: $(this).attr('data-control') || 'hue',
+                position: $(this).attr('data-position') || 'bottom left',
+
+                change: function(value, opacity) {
+                    if (!value) return;
+                    if (opacity) value += ', ' + opacity;
+                    if (typeof console === 'object') {
+                        console.log(value);
+                    }
+                },
+                theme: 'bootstrap'
+            });
+
+        });
+        /*datwpicker*/
+        jQuery('.mydatepicker').datepicker();
+        jQuery('#datepicker-autoclose').datepicker({
+            autoclose: true,
+            todayHighlight: true
+        });
+        var quill = new Quill('#editor', {
+            theme: 'snow'
+        });
+
+    </script>
 </body>
 
 </html>

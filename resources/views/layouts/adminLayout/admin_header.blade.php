@@ -15,6 +15,7 @@
                         <b class="logo-icon p-l-10">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
+                            <a href='{{url('/admin/dashboard')}}'/>
                             <img src="{{asset('images/backend_images/logo-icon.png')}}" alt="homepage" class="light-logo" />
                            
                         </b>
@@ -23,15 +24,13 @@
                         <span class="logo-text">
                              <!-- dark Logo text -->
                              <img src="{{asset('images/backend_images/logo-text.png')}}" alt="homepage" class="light-logo" />
-                            
                         </span>
                         <!-- Logo icon -->
                         <!-- <b class="logo-icon"> -->
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <!-- <img src="{{asset('images/backend_images/logo-text.png')}}" alt="homepage" class="light-logo" /> -->
-                            
-                        <!-- </b> -->
+                                <a href="{{url('/admin/dashboard')}}"
+                            <!-- <img src="{{asset('images/backend_images/logo-text.png')}}"  alt="homepage" class="light-logo"  /> 
                         <!--End Logo icon -->
                     </a>
                     <!-- ============================================================== -->
@@ -164,7 +163,7 @@
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i> My Balance</a>
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email m-r-5 m-l-5"></i> Inbox</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
+                                <a class="dropdown-item" href="{{url('/admin/settings')}}"><i class="ti-settings m-r-5 m-l-5"></i> Admin Setting</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{url('/logout')}}"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
                                 <div class="dropdown-divider"></div>
