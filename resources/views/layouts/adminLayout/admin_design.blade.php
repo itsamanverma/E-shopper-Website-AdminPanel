@@ -84,8 +84,6 @@
     <script src="{{asset('js/backend_js/libs/jquery-minicolors/jquery.minicolors.min.js')}}"></script>
     <script src="{{asset('js/backend_js/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
     <script src="{{asset('js/backend_js/libs/quill/dist/quill.min.js')}}"></script>
-    {{-- <script src="{{asset('js/backend_js/libs/jquery-validation/jquery.validate.min.js')}}"></script>  --}}
-
     <script>
         //***********************************//
         // For select 2
