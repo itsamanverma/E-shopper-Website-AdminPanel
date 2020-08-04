@@ -10,7 +10,7 @@ $(document).ready(function(){
 			success:function (resp) {
 				// alert(resp);
 				if (resp == "false") {
-					$('#chkPwd').html("<font color='red'> Current Password is Incorrect. </font>")
+					$('#chkPwd').html("<font color='#b94a48'> Current Password is Incorrect. </font>")
 				}else{
 					$('#chkPwd').html("<font color='green'> Current Password is Correct. </font>")
 				}
