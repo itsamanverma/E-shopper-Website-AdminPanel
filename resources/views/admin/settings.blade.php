@@ -27,7 +27,7 @@
               <h5>Update Password</h5>
             </div>
             <div class="widget-content nopadding">
-              <form class="form-horizontal"  name="password_validate" id="password_validate" novalidate="novalidate">
+              <form class="form-horizontal" name="password_validate" id="password_validate" novalidate="novalidate">
                 <div class="control-group">
                   <label class="control-label">Current Password</label>
                   <div class="controls">

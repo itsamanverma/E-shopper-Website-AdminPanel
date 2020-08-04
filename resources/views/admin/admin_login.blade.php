@@ -26,7 +26,7 @@
             </div>
         @endif        
             <form class="form-vertical" role="form" method="POST" action="{{ url('admin') }}">{{ csrf_field() }}
-                 <div class="control-group normal_text"> <h3><img src="{{ asset('images/backend_images/431') }}" alt="Logo" /></h3></div>
+                 <div class="control-group normal_text"> <h3><img src="{{ asset('images/backend_images/logo.png') }}" alt="Logo" /></h3></div>
                 <div class="control-group">
                     <div class="controls">
                         <div class="main_input_box">
