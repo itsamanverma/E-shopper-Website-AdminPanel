@@ -8,7 +8,12 @@ $(document).ready(function(){
 			url : '/admin/check-pwd',
 			data: {current_pwd:current_pwd},
 			success:function (resp) {
-				alert(resp);
+				// alert(resp);
+				if (resp == "false") {
+					$('#chkPwd').html("<font color='red'> Current Password is Incorrect. </font>")
+				}else{
+					$('#chkPwd').html("<font color='green'> Current Password is Correct. </font>")
+				}
 			},error:function(){
 				alert('Error');
 			}
