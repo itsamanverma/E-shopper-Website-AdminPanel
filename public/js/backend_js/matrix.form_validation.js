@@ -157,4 +157,12 @@ $(document).ready(function(){
 			$(element).parents('.control-group').addClass('success');
 		}
 	});
+
+	$('#delCat').click(function(){
+		if (confirm('Are you sure you want to delete this Catagory?')) {
+			return true;
+		}
+		return false;
+	});
+	
 });
