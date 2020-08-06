@@ -25,8 +25,15 @@ class CategoryController extends Controller
         return view('admin.categories.add_category')->with(compact('levels'));
     }
 
+    public function editCategory(Request $request, $id = null)
+    {
+        # code...
+        return view('admin.categories.edit_category');
+    }
 
     public function viewCategories() {
-        return view('admin.categories.view_categories');
+        $categories = Category::get();
+        // echo "<pre>"; print_r($categories); die;
+        return view('admin.categories.view_categories')->with(compact('categories'));
     }
 }
