@@ -3,7 +3,7 @@
 <div id="content">
     <div id="content-header">
         <div id="breadcrumb"> <a href="{{url('/admin/dashboard')}}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">Categories</a> <a href="#" class="current">View Categories</a> </div>
-        <h1>Tables</h1>
+        <h1>Categories</h1>
     </div>
     <div class="container-fluid">
       <hr>
@@ -11,16 +11,16 @@
         <div class="span12">
           <div class="widget-box">
             <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-              <h5>Data table</h5>
+              <h5>View Categories</h5>
             </div>
             <div class="widget-content nopadding">
               <table class="table table-bordered data-table">
                 <thead>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
+                    <th>Category ID</th>
+                    <th>Category Name</th>
+                    <th>Category URL</th>
+                    <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
