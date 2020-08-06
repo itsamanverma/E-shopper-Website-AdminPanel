@@ -3,7 +3,11 @@
 
 <div id="content">
   <div id="content-header">
+<<<<<<< HEAD
     <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Settings</a> </div>
+=======
+    <div id="breadcrumb"> <a href="{{url('/admin/dashboard')}}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Settings</a> </div>
+>>>>>>> master
     <h1>Admin Settings</h1>
     @if(Session::has('flash_message_error'))
         <div class="alert alert-error alert-block">
@@ -27,6 +31,10 @@
               <h5>Update Password</h5>
             </div>
             <div class="widget-content nopadding">
+<<<<<<< HEAD
+=======
+              <form class="form-horizontal" name="password_validate" id="password_validate" novalidate="novalidate">
+>>>>>>> master
               <form class="form-horizontal" method="post" action="{{url('/admin/update-pwd')}}" name="password_validate" id="password_validate" novalidate="novalidate"> {{csrf_field()}}
                 <div class="control-group">
                   <label class="control-label">Current Password</label>
