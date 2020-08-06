@@ -13,23 +13,23 @@
             <h5>Edit Category</h5>
           </div>
           <div class="widget-content nopadding">
-            <form class="form-horizontal" method="post" action="{{url('/admin/edit-category')}}" name="add_category" id="add_category" novalidate="novalidate">{{csrf_field()}}
+            <form class="form-horizontal" method="post" action="{{url('/admin/edit-category/'.$categoryDetails->id)}}" name="edit_category" id="edit_category" novalidate="novalidate">{{csrf_field()}}
               <div class="control-group">
                 <label class="control-label">Category Name</label>
                 <div class="controls">
-                  <input type="text" name="category_name" id="category_name">
+                  <input type="text" name="category_name" id="category_name" value="{{$categoryDetails->name}}">
                 </div>
               </div>
               <div class="control-group">
                   <label class="control-label">Description</label>
                   <div class="controls">
-                    <textarea name="description" id="description"></textarea>
+                    <textarea name="description" id="description">{{$categoryDetails->description}}</textarea>
                   </div>
               </div>
               <div class="control-group">
                 <label class="control-label">URL</label>
                 <div class="controls">
-                  <input type="text" name="url" id="url">
+                  <input type="text" name="url" id="url" value="{{$categoryDetails->url}}" >
                 </div>
               </div>
               <div class="form-actions">
