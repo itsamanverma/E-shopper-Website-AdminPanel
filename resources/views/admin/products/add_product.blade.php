@@ -15,20 +15,29 @@
           <div class="widget-content nopadding">
             <form class="form-horizontal" method="post" action="{{url('/admin/add-product')}}" name="add_product" id="add_product" novalidate="novalidate">{{csrf_field()}}
               <div class="control-group">
-                <label class="control-label">Category Name</label>
+                <label class="control-label">Under Category</label>
+                    <div class="controls">
+                      <select name="category_id" style="width: 220px">
+                          <?php echo $categories_dropdown; ?>
+                      </select>
+                    </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Product Name</label>
                 <div class="controls">
                   <input type="text" name="product_name" id="product_name">
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Category Level</label>
+                <label class="control-label">Product Code</label>
                 <div class="controls">
-                  <select name="parent_id" style="width: 220px">
-                      <option value="0">Main Category</option>
-                      {{--  @foreach ($levels as $val)
-                          <option value="{{$val->id}}">{{$val->name}}</option>
-                      @endforeach  --}}
-                  </select>
+                  <input type="text" name="product_code" id="product_code">
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Product Color</label>
+                <div class="controls">
+                  <input type="text" name="product_color" id="product_color">
                 </div>
               </div>
               <div class="control-group">
@@ -38,13 +47,19 @@
                   </div>
               </div>
               <div class="control-group">
-                <label class="control-label">URL</label>
+                <label class="control-label">Price</label>
                 <div class="controls">
-                  <input type="text" name="url" id="url">
+                  <input type="text" name="price" id="price">
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Image</label>
+                <div class="controls" >
+                  <input type="file" name="image" id="image">
                 </div>
               </div>
               <div class="form-actions">
-                <input type="submit" value="Add Category" class="btn btn-success">
+                <input type="submit" value="Add Product" class="btn btn-success">
               </div>
             </form>
           </div>
