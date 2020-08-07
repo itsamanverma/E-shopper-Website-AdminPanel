@@ -54,8 +54,12 @@
               </div>
               <div class="control-group">
                 <label class="control-label">Image</label>
-                <div class="controls" >
-                  <input type="file" name="image" id="image">
+                <div class="controls">
+                    <div class="uploader" id="uniform-undefinedx">
+                        <input type="file" size="19" style="opacity: 0;">
+                            <span class="filename">No file selected</span>
+                            <span class="action">Choose File</span>
+                    </div>
                 </div>
               </div>
               <div class="form-actions">
