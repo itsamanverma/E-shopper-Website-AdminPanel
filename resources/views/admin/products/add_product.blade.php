@@ -4,6 +4,18 @@
   <div id="content-header">
     <div id="breadcrumb"> <a href="{{url('/admin/dashboard')}}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">Products</a> <a href="#" class="current">Add Product</a> </div>
     <h1>Products</h1>
+    @if(Session::has('flash_message_error'))
+        <div class="alert alert-error alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button> 
+                <strong>{!! session('flash_message_error') !!}</strong>
+        </div>
+    @endif   
+    @if(Session::has('flash_message_success'))
+        <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button> 
+                <strong>{!! session('flash_message_success') !!}</strong>
+        </div>
+    @endif   
   </div>
   <div class="container-fluid"><hr>
     <div class="row-fluid">
@@ -17,7 +29,7 @@
               <div class="control-group">
                 <label class="control-label">Under Category</label>
                     <div class="controls">
-                      <select name="category_id" style="width: 220px">
+                      <select name="category_id" id="category_id" style="width: 220px">
                           <?php echo $categories_dropdown; ?>
                       </select>
                     </div>
@@ -55,11 +67,7 @@
               <div class="control-group">
                 <label class="control-label">Image</label>
                 <div class="controls">
-                    <div class="uploader" id="uniform-undefinedx">
-                        <input type="file" size="19" style="opacity: 0;">
-                            <span class="filename">No file selected</span>
-                            <span class="action">Choose File</span>
-                    </div>
+                  <input type="file" name="image" id="image">
                 </div>
               </div>
               <div class="form-actions">
