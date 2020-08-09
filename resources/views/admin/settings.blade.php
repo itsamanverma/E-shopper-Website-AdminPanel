@@ -4,7 +4,11 @@
 <div id="content">
   <div id="content-header">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Settings</a> </div>
+=======
+    <div id="breadcrumb"> <a href="{{url('/admin/dashboard')}}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Settings</a> </div>
+>>>>>>> master
 =======
     <div id="breadcrumb"> <a href="{{url('/admin/dashboard')}}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Settings</a> </div>
 >>>>>>> master
@@ -32,6 +36,10 @@
             </div>
             <div class="widget-content nopadding">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+              <form class="form-horizontal" name="password_validate" id="password_validate" novalidate="novalidate">
+>>>>>>> master
 =======
               <form class="form-horizontal" name="password_validate" id="password_validate" novalidate="novalidate">
 >>>>>>> master

@@ -31,6 +31,10 @@
                   <tr>
                     <th>Category ID</th>
                     <th>Category Name</th>
+<<<<<<< HEAD
+=======
+                    <th>Category Level</th>
+>>>>>>> master
                     <th>Category URL</th>
                     <th>Actions</th>
                   </tr>
@@ -40,10 +44,22 @@
                   <tr class="gradeX">
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->name }}</td>
+<<<<<<< HEAD
                     <td>{{ $category->url }}</td>
                     <td class="center"> 
                       <a href="{{url('/admin/edit-category/'.$category->id)}}" class="btn btn-primary btn-mini">Edit</a> 
                       <a href="{{url('/admin/delete-category/'.$category->id)}}" class="btn btn-danger btn-mini">Delete</a></td>
+=======
+                    <td>{{ $category->parent_id }}</td>
+                    <td>{{ $category->url }}</td>
+                    <td class="center"> 
+                      <a href="{{url('/admin/edit-category/'.$category->id)}}" class="btn btn-primary btn-mini">Edit</a> 
+                      <a href="{{url('/admin/delete-category/'.$category->id)}}" {{--  id="delCat"  --}} 
+                        onclick="return confirm('Are you sure you want to delete this Catagory?')" 
+                        class="btn btn-danger btn-mini">Delete
+                      </a>
+                    </td>
+>>>>>>> master
                   </tr>
                 @endforeach
                 </tbody>

@@ -78,6 +78,40 @@ $(document).ready(function(){
 		}
 	});
 	
+	/* Add Product validation */
+	$("#add_product").validate({
+		rules:{
+			category_id:{
+				required:true,
+			},
+			product_name:{
+				required:true,
+			},
+			product_code:{
+				required:true,
+			},
+			product_color:{
+				required:true,
+			},
+			description:{
+				required:true,
+			},
+			price:{
+				required:true,
+				number:true,
+			}				
+		},
+		errorClass: "help-inline",
+		errorElement: "span",
+		highlight:function(element, errorClass, validClass) {
+			$(element).parents('.control-group').addClass('error');
+		},
+		unhighlight: function(element, errorClass, validClass) {
+			$(element).parents('.control-group').removeClass('error');
+			$(element).parents('.control-group').addClass('success');
+		}
+	});
+	
 	/* Edit Category validation */
 	$("#edit_category").validate({
 		rules:{
@@ -157,4 +191,12 @@ $(document).ready(function(){
 			$(element).parents('.control-group').addClass('success');
 		}
 	});
+
+	$('#delCat').click(function(){
+		if (confirm('Are you sure you want to delete this Catagory?')) {
+			return true;
+		}
+		return false;
+	});
+	
 });

@@ -29,7 +29,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/check-pwd', 'AdminController@checkPassword');
     Route::match(['get', 'post'], '/admin/update-pwd','AdminController@updatePassword');
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> master
 
     /* Category Admin Route */
     Route::match(['get','post'],'/admin/add-category','CategoryController@addCategory');
@@ -37,6 +40,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::match(['get', 'post'],'/admin/delete-category/{id}','CategoryController@deleteCategory');
     Route::get('/admin/view-categories','CategoryController@viewCategories');
 
+<<<<<<< HEAD
+>>>>>>> master
+=======
+    // Product Routes
+    Route::match(['get', 'post'],'/admin/add-product','ProductController@addProduct');
 >>>>>>> master
 });
 
