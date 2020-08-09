@@ -77,4 +77,22 @@ class ProductController extends Controller
         return view('admin.products.add_product')->with(compact('categories_dropdown'));
     }
 
+    /**
+     * viewProduct a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function viewProduct()
+    {
+        # code...
+        $products = Product::get();
+        $products = json_decode(json_encode($products));
+        foreach($products as $key => $val){
+            $category_name = Category::where(['id' => $val->category_id])->first();
+            $products[$key]->category_name = $category_name->name;
+        }
+        // echo "<pre>"; print_r($products); die;
+        return view('admin.products.view_products')->with(compact('products'));
+    }
 }
