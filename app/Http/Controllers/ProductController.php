@@ -7,6 +7,9 @@ use App\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Input;
+use Intervention\Image\Facades\Image;
+
 
 class ProductController extends Controller
 {
@@ -24,6 +27,9 @@ class ProductController extends Controller
             # code...
             $data = $request->all();
             // echo "<pre>"; print_r($data); die;
+            if(empty($data['category_id'])){
+    			return redirect()->back()->with('flash_message_error','Under Category is missing!');	
+    		}
             $product = new Product();
             $product->category_id = $data['category_id'];
             $product->product_name = $data['product_name'];
@@ -35,7 +41,28 @@ class ProductController extends Controller
 				$product->description = '';    			
             }            
             $product->price = $data['price'];
-            $product->image = '';
+
+            /* Upload Image */
+            if ($request->hasFile('image')) {
+                # code...
+                $image_tmp = Input::file('image');
+                if ($image_tmp->isValid()) {
+                    $extension = $image_tmp->getClientOriginalExtension();
+                    $filename  = rand(111,99999).'.'.$extension; 
+                    $large_image_path = 'images/backend_images/products/large/'.$filename;
+                    $medium_image_path = 'images/backend_images/products/medium/'.$filename;
+                    $small_image_path = 'images/backend_images/products/small/  '.$filename;
+
+                    # Resize image code...
+                    Image::make($image_tmp)->save($large_image_path);
+                    Image::make($image_tmp)->resize(600,600)->save($medium_image_path);
+                    Image::make($image_tmp)->resize(300,300)->save($small_image_path);
+                    
+                    /* Store image name in Products table */
+                    $product->image = $filename;
+
+                }
+            }
             $product->save();
             return redirect()->back()->with('flash_message_success', 'Product has been added Successfully!');
         }

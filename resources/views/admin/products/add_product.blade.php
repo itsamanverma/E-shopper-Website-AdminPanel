@@ -25,7 +25,7 @@
             <h5>Add Product</h5>
           </div>
           <div class="widget-content nopadding">
-            <form class="form-horizontal" method="post" action="{{url('/admin/add-product')}}" name="add_product" id="add_product" novalidate="novalidate">{{csrf_field()}}
+            <form enctype='multipart/form-data' class="form-horizontal" method="post" action="{{url('/admin/add-product')}}" name="add_product" id="add_product" novalidate="novalidate">{{csrf_field()}}
               <div class="control-group">
                 <label class="control-label">Under Category</label>
                     <div class="controls">
