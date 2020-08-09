@@ -40,11 +40,7 @@
 <script src="{{ asset('js/backend_js/matrix.popover.js') }}"></script>
 
 <script src="{{ asset('js/backend_js/bootstrap-colorpicker.js')}}"></script> 
-<script src="{{ asset('js/backend_js/bootstrap-datepicker.js')}}"></script> 
-{{--  <script src="{{ asset('js/backend_js/jquery.toggle.buttons.js')}}"></script>   --}}
 <script src="{{ asset('js/backend_js/masked.js')}}"></script> 
-{{--  <script src="{{ asset('js/backend_js/matrix.form_common.js')}}"></script>   --}}
-<script src="{{ asset('js/backend_js/wysihtml5-0.3.0.js')}}"></script> 
 <script src="{{ asset('js/backend_js/jquery.peity.min.js')}}"></script> 
 <script src="{{ asset('js/backend_js/bootstrap-wysihtml5.js')}}"></script> 
 <script>

@@ -53,12 +53,12 @@
                     <td>{{ $product->price }}</td>
                     <td> 
                         @if (!empty($product->image))
-                        <img src="{{asset('/images/backend_images/products/medium/'.$product->image) }}" style="width:60px;">
+                        <img src="{{asset('/images/backend_images/products/small/'.$product->image) }}" style="width:60px;">
                         <?php //echo "<pre>"; print_r($product->image);?>
                         @endif
                     </td>
                     <td class="center"> 
-                      <a href="#" class="btn btn-success btn-mini">View</a>
+                      <a href="#myModal" data-toggle="modal" class="btn btn-success btn-mini">View</a>
                       <a href="{{url('/admin/edit-category/'.$product->id)}}" class="btn btn-primary btn-mini">Edit</a> 
                       <a href="{{url('/admin/delete-category/'.$product->id)}}" {{--  id="delCat"  --}} 
                         onclick="return confirm('Are you sure you want to delete this Product?')" 
@@ -66,6 +66,17 @@
                       </a>
                     </td>
                   </tr>
+                  <div class="widget-content">
+                    <div id="myModal" class="modal hide" aria-hidden="true" style="display: none;">
+                      <div class="modal-header">
+                        <button data-dismiss="modal" class="close" type="button">×</button>
+                        <h3>Pop up Header</h3>
+                      </div>
+                      <div class="modal-body">
+                        <p>Here is the text coming you can put also image if you want…</p>
+                      </div>
+                    </div>
+                  </div>
                 @endforeach
                 </tbody>
               </table>
@@ -75,4 +86,5 @@
       </div>
     </div>
   </div>
+
 @endsection
