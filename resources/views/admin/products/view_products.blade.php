@@ -58,9 +58,10 @@
                         @endif
                     </td>
                     <td class="center"> 
+                      <a href="#" class="btn btn-success btn-mini">View</a>
                       <a href="{{url('/admin/edit-category/'.$product->id)}}" class="btn btn-primary btn-mini">Edit</a> 
                       <a href="{{url('/admin/delete-category/'.$product->id)}}" {{--  id="delCat"  --}} 
-                        onclick="return confirm('Are you sure you want to delete this Catagory?')" 
+                        onclick="return confirm('Are you sure you want to delete this Product?')" 
                         class="btn btn-danger btn-mini">Delete
                       </a>
                     </td>

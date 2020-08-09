@@ -64,7 +64,7 @@ class ProductController extends Controller
                 }
             }
             $product->save();
-            return redirect()->back()->with('flash_message_success', 'Product has been added Successfully!');
+            return redirect('/admin/view-products')->with('flash_message_success', 'Product has been added Successfully!');
         }
         $categories = Category::where(['parent_id' => 0])->get();
         $categories_dropdown = "<option value='' selected disabled>Select</option>";
