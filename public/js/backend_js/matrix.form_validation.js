@@ -78,8 +78,8 @@ $(document).ready(function(){
 		}
 	});
 	
-	/* Add Product validation */
-	$("#add_product").validate({
+	/* Add/Edit Product validation */
+	$("#validation").validate({
 		rules:{
 			category_id:{
 				required:true,

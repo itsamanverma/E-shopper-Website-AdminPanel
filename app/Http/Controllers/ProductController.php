@@ -66,6 +66,7 @@ class ProductController extends Controller
             $product->save();
             return redirect('/admin/view-products')->with('flash_message_success', 'Product has been added Successfully!');
         }
+        // Category drop-down start 
         $categories = Category::where(['parent_id' => 0])->get();
         $categories_dropdown = "<option value='' selected disabled>Select</option>";
         foreach($categories as $cat){
@@ -74,13 +75,63 @@ class ProductController extends Controller
             foreach( $sub_categories as $sub_cat) {
     			$categories_dropdown .= "<option value = '".$sub_cat->id."'>&nbsp;--&nbsp;".$sub_cat->name."</option>";            }
         }
+        // category drop-down end
         return view('admin.products.add_product')->with(compact('categories_dropdown'));
     }
-
+    /**
+     * editProduct functinality 
+     * 
+     * @param \Illuminate\Http\Request  $request, $id 
+     * @return \Illuminate\Http\Response
+     */
+    public function editProduct(Request $request, $id = null)
+    {
+        # code...
+        if ($request->isMethod('post')) {
+            # code...
+            $data = $request->all();
+            // echo '<pre>'; print_r($data); die;
+            Product::where(['id' => $id])->update(
+                [
+                    'category_id' => $data['category_id'],
+                    'product_name' => $data['product_name'],
+                    'product_code' => $data['product_code'],
+                    'product_color' => $data['product_color'],
+                    'description' => $data['description'],
+                    'price' => $data['price'],
+                ]
+            );
+            // return redirect()->back()->with('flash_message_success','Product has been updated Successfully!');
+            return redirect('/admin/view-products')->with('flash_message_success','Product has been updated Successfully!');
+        }
+        $productDetails = Product::where(['id' => $id])->first();
+        // category drop-down start
+        $categories = Category::where(['parent_id' => 0])->get();
+        $categories_dropdown = "<option value='' selected disabled>Select</option>";
+        foreach($categories as $cat){
+            if ($cat->id == $productDetails->category_id) {
+                # code...
+                $selected = "selected";
+            }else{
+                $selected= "";
+            }
+            $categories_dropdown .= "<option value='".$cat->id."' ".$selected.">".$cat->name."</option>";
+            $sub_categories = Category::where(['parent_id' => $cat->id])->get();
+            foreach( $sub_categories as $sub_cat) {
+                if ($sub_cat->id == $productDetails->category_id) {
+                    # code...
+                    $selected = "selected";
+                }else{
+                    $selected= "";
+                }
+    			$categories_dropdown .= "<option value = '".$sub_cat->id."' ".$selected.">&nbsp;--&nbsp;".$sub_cat->name."</option>";            }
+        }
+        return view('admin.products.edit_product')->with(compact('productDetails','categories_dropdown'));
+    }
     /**
      * viewProduct a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \void
      * @return \Illuminate\Http\Response
      */
     public function viewProduct()

@@ -34,7 +34,7 @@ class CategoryController extends Controller
             // echo "<pre>"; print_r($data); die;
             Category::where(['id' => $id])->update(['name' => $data['category_name'],'description' =>$data['description'], 'url' => $data['url']
             ]);
-            return redirect('/admin/view-categories')->with('flash_message_success', 'Category update Successfully!');
+            return redirect('/admin/view-categories')->with('flash_message_success', 'Category has been updated Successfully!');
         }
         $categoryDetails = Category::where(['id' => $id])->first();
         $levels = Category::where(['parent_id'=>0])->get();
