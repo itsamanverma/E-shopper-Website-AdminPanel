@@ -77,6 +77,8 @@
                             <p>Product Code: {{ $product->product_code }}</p>
                             <p>Product Color: {{ $product->product_color }}</p>
                             <p>Price: {{ $product->price }}</p>
+                            <p>Fabric: </p>
+                            <p>Material: </p>
                             <p>Description: {{ $product->description }}</p>
                         </div>
                     </div>
