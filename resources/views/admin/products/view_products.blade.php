@@ -58,7 +58,7 @@
                         @endif
                     </td>
                     <td class="center"> 
-                      <a href="#myModal" data-toggle="modal" class="btn btn-success btn-mini">View</a>
+                      <a href="#myModal{{ $product->id }}" data-toggle="modal" class="btn btn-success btn-mini">View</a>
                       <a href="{{url('/admin/edit-category/'.$product->id)}}" class="btn btn-primary btn-mini">Edit</a> 
                       <a href="{{url('/admin/delete-category/'.$product->id)}}" {{--  id="delCat"  --}} 
                         onclick="return confirm('Are you sure you want to delete this Product?')" 
@@ -66,17 +66,20 @@
                       </a>
                     </td>
                   </tr>
-                  <div class="widget-content">
-                    <div id="myModal" class="modal hide" aria-hidden="true" style="display: none;">
-                      <div class="modal-header">
-                        <button data-dismiss="modal" class="close" type="button">×</button>
-                        <h3>Pop up Header</h3>
-                      </div>
-                      <div class="modal-body">
-                        <p>Here is the text coming you can put also image if you want…</p>
-                      </div>
+                    <div id="myModal{{ $product->id }}" class="modal hide" aria-hidden="true" style="display: none;">
+                        <div class="modal-header">
+                            <button data-dismiss="modal" class="close" type="button">×</button>
+                            <h3>{{ $product->product_name }} Full Details</h3>
+                        </div>
+                        <div class="modal-body">
+                            <p>Product ID: {{ $product->id }}</p>
+                            <p>Caegory ID: {{ $product->category_id }}</p>
+                            <p>Product Code: {{ $product->product_code }}</p>
+                            <p>Product Color: {{ $product->product_color }}</p>
+                            <p>Price: {{ $product->price }}</p>
+                            <p>Description: {{ $product->description }}</p>
+                        </div>
                     </div>
-                  </div>
                 @endforeach
                 </tbody>
               </table>
