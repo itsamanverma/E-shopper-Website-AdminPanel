@@ -78,6 +78,7 @@ class ProductController extends Controller
         // category drop-down end
         return view('admin.products.add_product')->with(compact('categories_dropdown'));
     }
+
     /**
      * editProduct functinality 
      * 
@@ -91,6 +92,26 @@ class ProductController extends Controller
             # code...
             $data = $request->all();
             // echo '<pre>'; print_r($data); die;
+
+            /* Upload Image */
+            if ($request->hasFile('image')) {
+                # code...
+                $image_tmp = Input::file('image');
+                if ($image_tmp->isValid()) {
+                    $extension = $image_tmp->getClientOriginalExtension();
+                    $filename  = rand(111,99999).'.'.$extension; 
+                    $large_image_path = 'images/backend_images/products/large/'.$filename;
+                    $medium_image_path = 'images/backend_images/products/medium/'.$filename;
+                    $small_image_path = 'images/backend_images/products/small/'.$filename;
+
+                    # Resize image code...
+                    Image::make($image_tmp)->save($large_image_path);
+                    Image::make($image_tmp)->resize(600,600)->save($medium_image_path);
+                    Image::make($image_tmp)->resize(300,300)->save($small_image_path);
+                }else{
+                     $filename = $data['current_image'];
+                }
+            }
             Product::where(['id' => $id])->update(
                 [
                     'category_id' => $data['category_id'],
@@ -99,6 +120,7 @@ class ProductController extends Controller
                     'product_color' => $data['product_color'],
                     'description' => $data['description'],
                     'price' => $data['price'],
+                    'image' => $filename ,
                 ]
             );
             // return redirect()->back()->with('flash_message_success','Product has been updated Successfully!');
