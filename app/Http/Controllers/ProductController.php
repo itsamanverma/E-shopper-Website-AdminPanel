@@ -111,7 +111,12 @@ class ProductController extends Controller
                 }
             }else{
                 $filename = $data['current_image'];
-           }
+            }
+
+            if(empty($data['description'])){
+                $data['description'] = '';
+            }
+
             Product::where(['id' => $id])->update(
                 [
                     'category_id' => $data['category_id'],
@@ -167,5 +172,30 @@ class ProductController extends Controller
         }
         // echo "<pre>"; print_r($products); die;
         return view('admin.products.view_products')->with(compact('products'));
+    }
+
+    /**
+     * delete function
+     * 
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function deleteProduct( $id = null)
+    {
+        # code...
+        Product::where(['id' => $id])->delete();
+        return redirect()->back()->with('flash_message_success', 'Product has been deleted successfully');
+    }
+    /**
+     * deleteProduct Image 
+     * 
+     * @param $id 
+     * @return \Illuminate\Http\JsonResponse 
+     */
+    public function deleteProductImage($id = null)
+    {
+        # code...
+        Product::where(['id' => $id])->update(['image' => '']);
+        return redirect()->back()->with('flash_message_success', 'Product Image has been deleted successfully!');
     }
 }
