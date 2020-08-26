@@ -108,10 +108,10 @@ class ProductController extends Controller
                     Image::make($image_tmp)->save($large_image_path);
                     Image::make($image_tmp)->resize(600,600)->save($medium_image_path);
                     Image::make($image_tmp)->resize(300,300)->save($small_image_path);
-                }else{
-                     $filename = $data['current_image'];
                 }
-            }
+            }else{
+                $filename = $data['current_image'];
+           }
             Product::where(['id' => $id])->update(
                 [
                     'category_id' => $data['category_id'],
