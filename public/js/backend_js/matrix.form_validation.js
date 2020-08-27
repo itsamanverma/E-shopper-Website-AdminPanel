@@ -204,7 +204,7 @@ $(document).ready(function () {
 		var deletefunction = $(this).attr('rel1');
 		swal({
 			title: "Are you sure?",
-			text: "You will not be able to recover this record again!",
+			text: "You wno't be able to revert this again!",
 			type: "warning",
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
