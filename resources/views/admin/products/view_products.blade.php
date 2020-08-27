@@ -60,9 +60,10 @@
                     <td class="center"> 
                       <a href="#myModal{{ $product->id }}" data-toggle="modal" class="btn btn-success btn-mini">View</a>
                       <a href="{{url('/admin/edit-product/'.$product->id)}}" class="btn btn-primary btn-mini">Edit</a> 
-                      <a href="{{url('/admin/delete-product/'.$product->id)}}" {{--  id="delCat"  --}} 
-                        onclick="return confirm('Are you sure you want to delete this Product?')" 
-                        class="btn btn-danger btn-mini">Delete
+                      <a rel="{{$product->id}}" rel1= "delete_product"
+                        <?php /* href="{{url('/admin/delete-product/'.$product->id)}}" */ ?> 
+                        href="javascript:" 
+                        class="btn btn-danger btn-mini deleteRecord">Delete
                       </a>
                     </td>
                   </tr>
