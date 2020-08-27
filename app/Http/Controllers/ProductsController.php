@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
 
 
-class ProductController extends Controller
+class ProductsController extends Controller
 {
 
     /**
@@ -197,5 +197,17 @@ class ProductController extends Controller
         # code...
         Product::where(['id' => $id])->update(['image' => '']);
         return redirect()->back()->with('flash_message_success', 'Product Image has been deleted successfully!');
+    }
+
+    /**
+     * create the add-attributes functionality
+     * 
+     * @param $product_id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function addAttributes(Request $request,$id = null)
+    {
+        # code...
+        
     }
 }
