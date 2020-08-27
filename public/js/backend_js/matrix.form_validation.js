@@ -210,11 +210,15 @@ $(document).ready(function () {
 			confirmButtonColor: '#3085d6',
 			cancelButtonColor: "#d33",
 			confirmButtonText: "Yes, delete it!",
+			cancelButtonText: "No, cancel!",
+			confirmButtonClass: "btn btn-success",
+			cancelButtonClass: "btn btn-danger",
+			buttonsStyting: false,
+			reverseButtons: true
 		},
 		function () {
 			window.location.href = "/admin/" + deletefunction + "/" + id
 		});
-		return false;
 	});
 
 });
