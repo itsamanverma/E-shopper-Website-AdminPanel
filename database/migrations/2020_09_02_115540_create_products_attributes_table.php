@@ -17,6 +17,7 @@ class CreateProductsAttributesTable extends Migration
             $table->increments('id');
             $table->integer('product_id');
             $table->string('sku');
+            $table->string('size');
             $table->float('price');
             $table->integer('stock');
             $table->timestamps();

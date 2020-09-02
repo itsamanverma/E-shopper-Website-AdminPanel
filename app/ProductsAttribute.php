@@ -13,6 +13,6 @@ class ProductsAttribute extends Model
      * @var array
      */
     protected $fillable = [
-        'product_id','sku', 'price', 'stock' 
+        'product_id','sku','size', 'price', 'stock' 
     ];
 }
