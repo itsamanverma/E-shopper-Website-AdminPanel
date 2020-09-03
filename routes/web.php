@@ -15,11 +15,14 @@ use Illuminate\Support\Facades\Auth;
 */
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+/**Start E-shopper Route */
+Route::get('/', 'IndexController@index');
+/**End E-shopper Route   */
 
-
+/** Start of Admin Route */
 Route::match(['get', 'post'], '/admin','AdminController@login');
 Route::get('/logout', 'AdminController@logout');
 
@@ -47,6 +50,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/delete-attribute/{id}','ProductsController@deleteAttribute');
 
 });
-
+/** End of Admin Route */
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
