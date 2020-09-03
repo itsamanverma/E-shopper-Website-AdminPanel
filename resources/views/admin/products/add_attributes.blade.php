@@ -25,7 +25,7 @@
             <h5>Add Product Attributes</h5>
           </div>
           <div class="widget-content nopadding">
-            <form enctype='multipart/form-data' class="form-horizontal" method="post" action="{{url('/admin/add-attributes/'.$productDetails->id)}}" name="validation" id="validation" novalidate="novalidate">{{csrf_field()}}
+            <form enctype='multipart/form-data' class="form-horizontal" method="post" action="{{url('/admin/add-attributes/'.$productDetails->id)}}" name="add_attribute" id="add_attribute" >{{csrf_field()}}
               <input type="hidden" name="product_id" value="{{$productDetails->id}}">
               <div class="control-group">
                 <label class="control-label">Product Name</label>
@@ -43,10 +43,10 @@
                 <label class="control-label"></label>
                 <div class="field_wrapper">
                   <div>
-                      <input type="text" name="sku[]" id="sku" placeholder="SKU" style="width:120px;"/>
-                      <input type="text" name="size[]" id="size" placeholder="Size" style="width:120px;"/>
-                      <input type="text" name="price[]" id="price" placeholder="Price" style="width:120px;"/>
-                      <input type="text" name="stock[]" id="stock" placeholder="Stock" style="width:120px;"/>
+                      <input required="" type="text" name="sku[]" id="sku" placeholder="SKU" style="width:120px;"/>
+                      <input required="" type="text" name="size[]" id="size" placeholder="Size" style="width:120px;"/>
+                      <input required="" type="text" name="price[]" id="price" placeholder="Price" style="width:120px;"/>
+                      <input required="" type="text" name="stock[]" id="stock" placeholder="Stock" style="width:120px;"/>
                       <a href="javascript:void(0);" class="add_button" title="Add field">Add</a>
                   </div>
                 </div>
