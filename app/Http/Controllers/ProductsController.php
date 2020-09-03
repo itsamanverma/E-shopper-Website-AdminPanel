@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
-
+use PhpParser\JsonDecoder;
 
 class ProductsController extends Controller
 {
@@ -209,7 +209,9 @@ class ProductsController extends Controller
     public function addAttributes(Request $request,$id = null)
     {
         # code...
-        $productDetails = Product::where(['id' => $id])->first();
+        $productDetails = Product::with('attributes')->where(['id' => $id])->first();
+        // $productDetails = json_decode(json_encode($productDetails));
+        // echo '<pre>'; print_r($productDetails); die();
         if ($request->isMethod('post')) {
             # code...
             $data = $request->all();

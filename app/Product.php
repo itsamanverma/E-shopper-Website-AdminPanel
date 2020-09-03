@@ -15,4 +15,10 @@ class Product extends Model
     protected $fillable = [
         'category_id','product_name','product_code','product_color', 'description', 'price', 'image' 
     ];
+
+    public function attributes()
+    {
+        # code...
+        return $this->hasMany('App\ProductsAttribute', 'product_id');
+    }
 }

@@ -59,6 +59,48 @@
         </div>
       </div>
     </div>
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+            <h5>View Attributes</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered data-table">
+              <thead>
+                <tr>
+                  <th>Attributes ID</th>
+                  <th>SKU</th>
+                  <th>Size</th>
+                  <th>Price</th>
+                  <th>Stock</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody> 
+              @foreach ($productDetails['attributes'] as $attribute)
+              <?php //echo "<pre>"; print_r($products);?>
+                <tr class="gradeX">
+                  <td>{{ $attribute->id }}</td>
+                  <td>{{ $attribute->sku }}</td>
+                  <td>{{ $attribute->size }}</td>
+                  <td>{{ $attribute->price }}</td>
+                  <td>{{ $attribute->stock }}</td>
+                  <td class="center"> 
+                    <a rel="{{$attribute->id}}" rel1= "delete-product"
+                      <?php /* href="{{url('/admin/delete-product/'.$product->id)}}" */ ?> 
+                      href="javascript:" 
+                      class="btn btn-danger btn-mini deleteRecord">Delete
+                    </a>
+                  </td>
+                </tr>
+              @endforeach
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
     
