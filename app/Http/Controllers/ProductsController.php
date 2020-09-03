@@ -233,4 +233,17 @@ class ProductsController extends Controller
         }
         return view('admin.products.add_attributes')->with(compact('productDetails'));
     }
+
+    /**
+     * deleteAttribute  
+     * 
+     * @param $id 
+     * @return \Illuminate\Http\JsonResponse 
+     */
+    public function deleteAttribute($id = null)
+    {
+        # code...
+        ProductsAttribute::where(['id' => $id])->delete();
+        return redirect()->back()->with('flash_message_success', 'Attribute  has been deleted Successfully!');
+    }
 }
