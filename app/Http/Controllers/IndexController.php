@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -15,6 +16,7 @@ class IndexController extends Controller
      */
     public function index(){
         # code...
-        return view('index');
+        $productAll = Product::get();
+        return view('index')->with(compact('productAll'));
     }
 }
