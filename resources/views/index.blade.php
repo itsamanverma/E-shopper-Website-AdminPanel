@@ -243,14 +243,15 @@
                                             <a href="#" class="btn btn-default add-to-cart"><i
                                                     class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
-                                        <div class="product-overlay">
+                                        {{-- <div class="product-overlay">
                                             <div class="overlay-content">
+                                                <img src="{{ asset('images/backend_images/products/small/'.$product->image) }}" alt="" />
                                                 <h2>₹{{ $product->price }}</h2>
                                                 <p>{{ $product->product_name }}</p>
                                                 <a href="#" class="btn btn-default add-to-cart"><i
                                                         class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="choose">
                                         <ul class="nav nav-pills nav-justified">
