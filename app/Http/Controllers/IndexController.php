@@ -16,7 +16,7 @@ class IndexController extends Controller
      */
     public function index(){
         # code...
-        $productAll = Product::get();
+        $productAll = Product::orderby('id', 'DESC')->get();
         return view('index')->with(compact('productAll'));
     }
 }
