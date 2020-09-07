@@ -45,7 +45,6 @@ class IndexController extends Controller
                                         <ul>";
                                         $sub_categories = Category::where(['parent_id' => $cat->id])->get();
                                             foreach ($sub_categories as $subcat) {
-                                                # code...
                                                 $categories_menu .= "<li><a href='#'>".$subcat->name." </a></li>";
                                             }
                                             $categories_menu .= "</ul>
