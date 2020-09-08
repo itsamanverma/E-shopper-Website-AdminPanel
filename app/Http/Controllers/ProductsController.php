@@ -255,8 +255,12 @@ class ProductsController extends Controller
      */
     public function products( $url = null)
     {
-        # code...
-        echo $url; die;
+            # code...
+            $categoryDetails = Category::where(['url' => $url])->first();
+            $productsAll = Product::where(['category_id' => $categoryDetails->id])->get();
+            return view('products.listing')->with(compact('categoryDetails','productsAll'));
+
+
     }
 
 }
