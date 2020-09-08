@@ -246,4 +246,17 @@ class ProductsController extends Controller
         ProductsAttribute::where(['id' => $id])->delete();
         return redirect()->back()->with('flash_message_success', 'Attribute  has been deleted Successfully!');
     }
+
+    /**
+     * create the products to show category all products
+     * 
+     * @param $url = null
+     * @return /Illuminate/Http/JsonResponse
+     */
+    public function products( $url = null)
+    {
+        # code...
+        echo $url; die;
+    }
+
 }

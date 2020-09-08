@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Auth;
 
 /**Start E-shopper Route */
 Route::get('/', 'IndexController@index');
-
+    /* Category/Listing Page */
 Route::get('/products/{url}','ProductsController@products');
 /**End E-shopper Route   */
 
