@@ -25,6 +25,12 @@ class Category extends Model
          'remember_token',
     ];
 
+    public function categories()
+    {
+        # code...
+        return $this->hasMany('App\Category', 'parent_id');
+    }
+    
     public function getRememberToken()
     {
         return $this->remember_token;

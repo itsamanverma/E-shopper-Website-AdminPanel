@@ -18,8 +18,11 @@ use Illuminate\Support\Facades\Auth;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
 /**Start E-shopper Route */
 Route::get('/', 'IndexController@index');
+
+Route::get('/products/{url}','ProductsController@products');
 /**End E-shopper Route   */
 
 /** Start of Admin Route */
