@@ -1,6 +1,6 @@
-## नमस्ते (Namaste)🙏🏻, I'm Aman Verma! <img src="https://media.giphy.com/media/12oufCB0MyZ1Go/giphy.gif" width="50">
+## नमस्ते (Namaste)🙏🏻, I'm Aman Verma! :crown:
 
-## Make E-Shopper website in Laravel | Make Admin Panel in Laravel 5.8
+## Make E-Shopper website in Laravel 5.8 | Make Admin Panel in Laravel 5.8
 
 ### Installation :shipit:
 
