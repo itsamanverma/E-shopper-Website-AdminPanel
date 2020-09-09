@@ -1,14 +1,23 @@
 ## नमस्ते (Namaste)🙏🏻, I'm Aman Verma! <img src="https://media.giphy.com/media/12oufCB0MyZ1Go/giphy.gif" width="50">
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Make E-Shopper website in Laravel | Make Admin Panel in Laravel 5.8
 
-## About Laravel
+### Installation :shipit:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Clone the repo and cd into folder 
+- run composer install 
+- Rename or copy .env.example file to ###.env
+- php artisan key:generate
+- Set your database credentials in your .env file
+- Set your Stripe credentials in your .env file. Specifically STRIPE_KEY and STRIPE_SECRET
+- Set ADMIN_Email && admin password in your database.
+- php artisan serve or use Laravel Valet or Laravel Homestead
+- Visit localhost:8000 in your browser
+- Visit localhost:8000/admin if you want to access the dashboard admin backend.Enter Admin 
+  User/Password set by you in database. it,s ready to see :heavy_check_mark:
+
+
+
+
+
 
