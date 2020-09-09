@@ -1,8 +1,8 @@
 ## नमस्ते (Namaste)🙏🏻, I'm Aman Verma! :crown:
 
-## Make E-Shopper website in Laravel 5.8 | Make Admin Panel in Laravel 5.8
+### Make E-Shopper website in Laravel 5.8 | Make Admin Panel in Laravel 5.8
 
-### Installation :shipit:
+#### Installation :shipit:
 
 - Clone the repo and cd into folder 
 - run composer install 
