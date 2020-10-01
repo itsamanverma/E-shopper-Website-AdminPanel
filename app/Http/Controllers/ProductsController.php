@@ -257,7 +257,7 @@ class ProductsController extends Controller
     {
             # code...
             /* SHOW 404 PAGE IF CATEGORY URL DOES NOT EXIST */
-            $countCategory = Category::where(['url' => $url])->count();
+            $countCategory = Category::where(['url' => $url,'status' => 1])->count();
             // echo $countCategory; die;
             if ($countCategory == 0) {
                 # code...
