@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,8 +22,12 @@ use Illuminate\Support\Facades\Auth;
 
 /**Start E-shopper Route */
 Route::get('/', 'IndexController@index');
+
 /* Category/Listing Page */
 Route::get('/products/{url}','ProductsController@products');
+
+/* Product Details Page */
+Route::get('/product/{id}', 'ProductsController@product');
 /**End E-shopper Route   */
 
 /** Start of Admin Route */

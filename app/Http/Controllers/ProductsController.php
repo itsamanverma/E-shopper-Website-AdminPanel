@@ -288,7 +288,7 @@ class ProductsController extends Controller
                 abort(404);
             }
 
-            /* GEt the all categories & sub Categories */
+            /* get the all categories & sub Categories */
             $categories = Category::with('categories')->where(['parent_id' => 0])->get();
             $categoryDetails = Category::where(['url' => $url])->first();
             if($categoryDetails->parent_id == 0){
@@ -309,4 +309,17 @@ class ProductsController extends Controller
 
     }
 
+    /**
+     *  create the  product detail function using the id
+     * 
+     * @param $id = null
+     * @return /Illuminate/Http/JsonResponse
+     * */ 
+     public function product( $id = null){
+         $productDetails = Product::where('id', $id)->first();
+
+         /* get the all categories & sub Categories */
+         $categories = Category::with('categories')->where(['parent_id' => 0])->get();
+         return view('products.detail')->with(compact('productDetails','categories'));
+     }
 }
