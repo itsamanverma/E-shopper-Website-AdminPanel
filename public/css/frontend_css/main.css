@@ -1200,6 +1200,10 @@ h2.title {
   margin-bottom: 5px;
 }
 
+.product-information .select{
+  width: 150px;
+}
+
 .product-information span {
   display: inline-block;
   margin-bottom: 8px;

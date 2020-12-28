@@ -316,8 +316,8 @@ class ProductsController extends Controller
      * @return /Illuminate/Http/JsonResponse
      * */ 
      public function product( $id = null){
-         $productDetails = Product::where('id', $id)->first();
-
+         $productDetails = Product::with('attributes')->where('id', $id)->first();
+         
          /* get the all categories & sub Categories */
          $categories = Category::with('categories')->where(['parent_id' => 0])->get();
          return view('products.detail')->with(compact('productDetails','categories'));

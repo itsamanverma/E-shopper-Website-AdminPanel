@@ -8,17 +8,15 @@
                         <h2>Category</h2>
                         <div class="panel-group category-products" id="accordian">
                             <!--category-productsr-->
-                            <?php
-                            //echo $categories_menu;
-                            ?>
+                            <?php //echo $categories_menu; ?>
                             <div class="panel panel-default">
                                 @foreach ($categories as $cat)
-                                    @if ($cat->status == '1')
+                                    @if ($cat->status == "1")
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
                                                 <a data-toggle="collapse" data-parent="#accordian" href="#{{ $cat->id }}">
                                                     <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                                                    {{ $cat->name }}
+                                                    {{$cat->name }}
                                                 </a>
                                             </h4>
                                         </div>
@@ -26,10 +24,8 @@
                                             <div class="panel-body">
                                                 <ul>
                                                     @foreach ($cat->categories as $subcat)
-                                                        @if ($subcat->status == '1')
-                                                            <li><a
-                                                                    href="{{ asset('/products/' . $subcat->url) }}">{{ $subcat->name }}</a>
-                                                            </li>
+                                                        @if ($subcat->status == "1")
+                                                            <li><a href="{{ asset('/products/'.$subcat->url)}}">{{$subcat->name }}</a></li>
                                                         @endif
                                                     @endforeach
                                                 </ul>
@@ -83,8 +79,7 @@
                         <!--product-details-->
                         <div class="col-sm-5">
                             <div class="view-product">
-                                <img src="{{ asset('images/backend_images/products/medium/' . $productDetails->image) }}"
-                                    alt="" />
+                                <img src="{{ asset('images/backend_images/products/medium/'.$productDetails->image) }}" alt="" />
                             </div>
                             <div id="similar-product" class="carousel slide" data-ride="carousel">
 
@@ -124,6 +119,14 @@
                                 <img src="images/product-details/new.jpg" class="newarrival" alt="" />
                                 <h2>{{ $productDetails->product_name }}</h2>
                                 <p>Code ID: {{ $productDetails->product_code }}</p>
+                                <p class="select">
+                                    <select id="selSize" name="size" >
+                                        <option value="">Select Size</option>
+                                        @foreach ($productDetails->attributes as $sizes)
+                                         <option value="{{$sizes->size}}">{{$sizes->size}}</option>   
+                                        @endforeach
+                                    </select>
+                                </p>
                                 <img src="images/product-details/rating.png" alt="" />
                                 <span>
                                     <span>₹{{ $productDetails->price }}</span>
@@ -450,7 +453,7 @@
                             </a>
                         </div>
                     </div>
-                    <!--/recommended_items-->ss
+                    <!--/recommended_items-->
 
                 </div>
             </div>
