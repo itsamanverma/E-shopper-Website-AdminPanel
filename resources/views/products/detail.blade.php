@@ -123,13 +123,13 @@
                                     <select id="selSize" name="size" >
                                         <option value="">Select Size</option>
                                         @foreach ($productDetails->attributes as $sizes)
-                                         <option value="{{$sizes->size}}">{{$sizes->size}}</option>   
+                                         <option value="{{$productDetails->id}}-{{$sizes->size}}">{{$sizes->size}}</option>   
                                         @endforeach
                                     </select>
                                 </p>
                                 <img src="images/product-details/rating.png" alt="" />
                                 <span>
-                                    <span>₹{{ $productDetails->price }}</span>
+                                    <span id="getPrice">₹{{$productDetails->price}}</span>
                                     <label>Quantity:</label>
                                     <input type="text" value="1" />
                                     <button type="button" class="btn btn-fefault cart">

@@ -28,6 +28,9 @@ Route::get('/products/{url}','ProductsController@products');
 
 /* Product Details Page */
 Route::get('/product/{id}', 'ProductsController@product');
+
+/* Get Product Attribute Price*/
+Route::get('/get-product-price', 'ProductsController@getProductPrice');
 /**End E-shopper Route   */
 
 /** Start of Admin Route */

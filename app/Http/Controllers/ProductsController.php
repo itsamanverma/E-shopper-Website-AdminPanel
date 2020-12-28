@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
-use PhpParser\JsonDecoder;
 
 class ProductsController extends Controller
 {
@@ -317,9 +316,23 @@ class ProductsController extends Controller
      * */ 
      public function product( $id = null){
          $productDetails = Product::with('attributes')->where('id', $id)->first();
-         
+
          /* get the all categories & sub Categories */
          $categories = Category::with('categories')->where(['parent_id' => 0])->get();
          return view('products.detail')->with(compact('productDetails','categories'));
      }
+
+     /** 
+      * create the getProductPrice function to get the product price based on the size
+      * 
+      * @param
+      * @return /Illuminate/Http/JsonResponse 
+      */ 
+      public function getProductPrice(Request $request){
+        $data = $request->all();
+        // echo '<pre>'; print_r($data); die;
+        $proArr = explode('-',$data['idSize']);
+        $proAttr = ProductsAttribute::where(['product_id' => $proArr[0], 'size' => $proArr[1]])->first();
+        
+      }
 }
