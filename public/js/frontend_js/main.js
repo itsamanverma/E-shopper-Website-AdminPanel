@@ -33,6 +33,9 @@ $(document).ready(function () {
 $(document).ready(function () {
 	$('#selSize').change(function () {
 		var idSize = $(this).val();
+		if (idSize == "") {
+			return false;
+		}
 		$.ajax({
 			type: 'get',
 			url: '/get-product-price',
@@ -45,3 +48,5 @@ $(document).ready(function () {
 		})
 	});
 });
+
+$

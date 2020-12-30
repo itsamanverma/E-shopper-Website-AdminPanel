@@ -333,6 +333,6 @@ class ProductsController extends Controller
         // echo '<pre>'; print_r($data); die;
         $proArr = explode('-',$data['idSize']);
         $proAttr = ProductsAttribute::where(['product_id' => $proArr[0], 'size' => $proArr[1]])->first();
-        
+        echo $proAttr->price; 
       }
 }
