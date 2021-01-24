@@ -39,7 +39,12 @@ class ProductsController extends Controller
     			$product->description = $data['description'];
     		}else{
 				$product->description = '';    			
-            }            
+            }
+            if (!empty($data['care'])) {
+                $product->care = $data['care'];
+            } else {
+                $product->care = '';
+            }
             $product->price = $data['price'];
 
             /* Upload Image */
@@ -84,7 +89,7 @@ class ProductsController extends Controller
      * 
      * @param \Illuminate\Http\Request  $request, $id 
      * @return \Illuminate\Http\Response
-     */
+     */     
     public function editProduct(Request $request, $id = null)
     {
         # code...
@@ -117,6 +122,11 @@ class ProductsController extends Controller
                 $data['description'] = '';
             }
 
+            if (empty($data['care'])) {
+                # code...
+                $data['care'] = '';
+            }
+
             Product::where(['id' => $id])->update(
                 [
                     'category_id' => $data['category_id'],
@@ -124,6 +134,7 @@ class ProductsController extends Controller
                     'product_code' => $data['product_code'],
                     'product_color' => $data['product_color'],
                     'description' => $data['description'],
+                    'care'        => $data['care'],
                     'price' => $data['price'],
                     'image' => $filename ,
                 ]
