@@ -34,7 +34,7 @@ $mainCategories = Controller::mainCategories();
             <div class="row">
                 <div class="col-sm-4">
                     <div class="logo pull-left">
-                        <a href="{{url('/')}}"><img src="{{('images/frontend_images/home/logo.png')}}" alt="" /></a>
+                        <a href="{{url('/')}}"><img src="{{ asset('images/frontend_images/home/logo.png')}}" alt="" /></a>
                     </div>
                     <div class="btn-group pull-right">
                         <div class="btn-group">
