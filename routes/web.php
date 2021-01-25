@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,6 +30,10 @@ Route::get('/product/{id}', 'ProductsController@product');
 
 /* Get Product Attribute Price*/
 Route::get('/get-product-price', 'ProductsController@getProductPrice');
+
+/* Get Product Attribute Stock */
+Route::get('/get-product-stock', 'ProductsController@getProductStock');
+
 /**End E-shopper Route   */
 
 /** Start of Admin Route */

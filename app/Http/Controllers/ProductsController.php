@@ -334,9 +334,9 @@ class ProductsController extends Controller
      }
 
      /** 
-      * create the getProductPrice function to get the product price based on the size
+      * create the getProductPrice function to get the product attribute price based on the size
       * 
-      * @param
+      * @param Resquest $request
       * @return /Illuminate/Http/JsonResponse 
       */ 
       public function getProductPrice(Request $request){
@@ -345,5 +345,18 @@ class ProductsController extends Controller
         $proArr = explode('-',$data['idSize']);
         $proAttr = ProductsAttribute::where(['product_id' => $proArr[0], 'size' => $proArr[1]])->first();
         echo $proAttr->price; 
+      }
+
+      /**
+       * create the getProductStock function to get the product attribute stock based on the size
+       * 
+       * @param Illuminate\Http\Request $request
+       * @return /Illuminate/Http/JsonResponse
+       */
+      public function getProductStock(Request $request) {
+          $data = $request->all();
+           $proArr = explode('-',$data['idSize']);
+           $proAttr = ProductsAttribute::where(['product_id' => $proArr[0], 'size' => $proArr[1]])->first();
+           echo $proAttr->stock;
       }
 }
