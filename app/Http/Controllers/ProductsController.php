@@ -175,7 +175,7 @@ class ProductsController extends Controller
     public function viewProduct()
     {
         # code...
-        $products = Product::get();
+        $products = Product::orderBy('id','DESC')->get();
         $products = json_decode(json_encode($products));
         foreach($products as $key => $val){
             $category_name = Category::where(['id' => $val->category_id])->first();
