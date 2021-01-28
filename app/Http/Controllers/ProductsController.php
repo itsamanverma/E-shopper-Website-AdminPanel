@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Category;
 use App\ProductsAttribute;
+use App\ProductsImage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -263,7 +264,7 @@ class ProductsController extends Controller
                     $attriCountSize = ProductsAttribute::where(['product_id' =>$id, 'size' =>$data['size'][$key]])->count();
                     if ($attriCountSize > 0) {
                         # code...
-                        return redirect('admin/add-attributes/'.$id)->with('flash_message_error', 'Size already exists!
+                        return redirect('admin/add-attributes/'.$id)->with('flash_message_error', '"'.$data['size'][$key].'" Size already exists for this Product!
                         Please add another Sizes');
                     }
 
@@ -280,6 +281,44 @@ class ProductsController extends Controller
         }
         return view('admin.products.add_attributes')->with(compact('productDetails'));
     }
+
+    /**
+    * create the add-Images functionality
+    *
+    * @param $product_id Request $request
+    * @return \Illuminate\Http\JsonResponse
+    */
+    public function addImages(Request $request,$id = null)
+    {
+    # code...
+    $productDetails = Product::with('attributes')->where(['id' => $id])->first();
+    
+        if ($request->isMethod('post')) {
+            # Add Images code...
+            $data = $request->all();
+            if ($request->hasFile('image')) {
+                $files = $request->file('image');
+                // echo '<pre>'; print_r($files); die();
+               foreach ($files as $file) {
+                   # code...
+                    $image = new ProductsImage();
+                    $extension = $file->getClientOrignalExtension();
+                    $fileName = rand(111,99999).'.'.$extension;
+                    $large_image_path = 'images/backend_images/products/large'.$fileName;
+                    $medium_image_path = 'images/backend_images/products/medium'.$fileName;
+                    $small_image_path = 'images/backend_images/products/small'.$fileName;
+                    Image::make($file)->save($large_image_path);
+                    Image::make($file)->resize(600,600)->save($medium_image_path);
+                    Image::make($file)->resize(300,300)->save($small_image_path);
+                    $image->image = $fileName;
+                    $image->prodduct_id = $data['product_id'];
+                    $image->save();
+               }
+            }
+        }
+        return view('admin.products.add_images')->with(compact('productDetails'));
+    }
+
 
     /**
      * deleteAttribute  
