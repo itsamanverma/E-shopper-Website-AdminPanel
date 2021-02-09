@@ -16,3 +16,4 @@ class ProductsImage extends Model
     'product_id','image'
     ];
 }
+                                                                                

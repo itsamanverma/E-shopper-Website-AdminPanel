@@ -236,6 +236,43 @@ class ProductsController extends Controller
     }
 
     /**
+    * delete Alt Imernate images
+    *
+    * @param $id
+    * @return \Illuminate\Http\JsonResponse
+    */
+    public function deleteAltImage($id = null)
+    {
+    # code...
+    // Get Product Image Name
+    $productImage = ProductsImage::where(['id' => $id])->first();
+    // echo $productImage->image; die;
+    /* get the product image path */
+    $large_image_path = 'images/backend_images/products/large/';
+    $medium_image_path = 'images/backend_images/products/medium/';
+    $small_image_path = 'images/backend_images/products/small/';
+
+    // echo $large_image_path.$productImage->image; die;
+    /* delete large image if not exist in the folder */
+    if (file_exists($large_image_path.$productImage->image)) {
+    unlink($large_image_path.$productImage->image);
+    }
+
+    /* delete medium image if not exist in the folder */
+    if (file_exists($medium_image_path.$productImage->image)) {
+    unlink($medium_image_path.$productImage->image);
+    }
+
+    /* delete large image if not exist in the folder */
+    if (file_exists($small_image_path.$productImage->image)) {
+    unlink($small_image_path.$productImage->image);
+    }
+
+    ProductsImage::where(['id' => $id])->delete();
+
+    return redirect()->back()->with('flash_message_success', 'Product Alternae Image(s) has been deleted successfully!');
+    }
+    /**
      * create the add-attributes functionality
      * 
      * @param $product_id
@@ -302,23 +339,26 @@ class ProductsController extends Controller
                foreach ($files as $file) {
                    # code...
                     $image = new ProductsImage();
-                    $extension = $file->getClientOrignalExtension();
+                    $extension = $file->getClientOriginalExtension();
                     $fileName = rand(111,99999).'.'.$extension;
-                    $large_image_path = 'images/backend_images/products/large'.$fileName;
-                    $medium_image_path = 'images/backend_images/products/medium'.$fileName;
-                    $small_image_path = 'images/backend_images/products/small'.$fileName;
+                    $large_image_path = 'images/backend_images/products/large/'.$fileName;
+                    $medium_image_path = 'images/backend_images/products/medium/'.$fileName;
+                    $small_image_path = 'images/backend_images/products/small/'.$fileName;
                     Image::make($file)->save($large_image_path);
                     Image::make($file)->resize(600,600)->save($medium_image_path);
                     Image::make($file)->resize(300,300)->save($small_image_path);
                     $image->image = $fileName;
-                    $image->prodduct_id = $data['product_id'];
+                    $image->product_id = $data['product_id'];
                     $image->save();
                }
             }
+            return redirect('admin/add-images/'.$id)->with('flash_message_success', 'Product Image(s) had been added successfully!');
         }
-        return view('admin.products.add_images')->with(compact('productDetails'));
-    }
 
+        $productsImages = ProductsImage::where(['product_id' =>$id])->get();
+        
+        return view('admin.products.add_images')->with(compact('productDetails','productsImages'));
+    }
 
     /**
      * deleteAttribute  
