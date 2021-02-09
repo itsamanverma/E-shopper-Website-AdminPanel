@@ -247,4 +247,26 @@ $(document).ready(function () {
 			x--; //Decrement field counter
 		});
 	});
+
+	$(".delete-alt-image").click(function () {
+		var id = $(this).attr('rel');
+		var deletefunction = $(this).attr('rel1');
+		swal({
+			title: "Are you sure?",
+			text: "You wno't be able to revert this again!",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes, delete it!",
+			cancelButtonText: "No, cancel!",
+			confirmButtonClass: "btn btn-success",
+			cancelButtonClass: "btn btn-danger",
+			buttonsStyting: false,
+			reverseButtons: true
+		},
+			function () {
+				window.location.href = "/admin/" + deletefunction + "/" + id
+			});
+	});
 });
