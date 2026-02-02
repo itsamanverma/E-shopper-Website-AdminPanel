@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
-use App\Category;
-use App\ProductsAttribute;
-use App\ProductsImage;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\ProductsAttribute;
+use App\Models\ProductsImage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -82,7 +82,7 @@ class ProductsController extends Controller
     			$categories_dropdown .= "<option value = '".$sub_cat->id."'>&nbsp;--&nbsp;".$sub_cat->name."</option>";            }
         }
         // category drop-down end
-        return view('admin.products.add_product')->with(compact('categories_dropdown'));
+        return view('admin.products.add_product_modern')->with(compact('categories_dropdown'));
     }
 
     /**
@@ -183,7 +183,7 @@ class ProductsController extends Controller
             $products[$key]->category_name = $category_name->name;
         }
         // echo "<pre>"; print_r($products); die;
-        return view('admin.products.view_products')->with(compact('products'));
+        return view('admin.products.view_products_modern')->with(compact('products'));
     }
 
     /**

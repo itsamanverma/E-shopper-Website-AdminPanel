@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
-use App\User;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -37,7 +37,7 @@ class AdminController extends Controller
         // }else{
         //     return redirect('/admin')->with('flash_message_error','Please login to access');
         // }
-        return view('admin.dashboard');
+        return view('admin.dashboard-final');
     }
 
     public function settings(){

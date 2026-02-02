@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Category;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -29,7 +29,7 @@ class CategoryController extends Controller
             return redirect('/admin/view-categories')->with('flash_message_success','Category added Successfully!');
         }
         $levels = Category::where(['parent_id'=>0])->get();
-        return view('admin.categories.add_category')->with(compact('levels'));
+        return view('admin.categories.add_category_modern')->with(compact('levels'));
     }
 
     public function editCategory(Request $request, $id = null)
@@ -71,6 +71,6 @@ class CategoryController extends Controller
     public function viewCategories() {
         $categories = Category::get();
         // echo "<pre>"; print_r($categories); die;
-        return view('admin.categories.view_categories')->with(compact('categories'));
+        return view('admin.categories.view_categories_modern')->with(compact('categories'));
     }
 }

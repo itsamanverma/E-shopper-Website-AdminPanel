@@ -1,16 +1,18 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    //
+    use HasFactory;
+    
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $fillable = [
         'category_id','product_name','product_code','product_color', 'description','care', 'price', 'image' 
@@ -18,7 +20,6 @@ class Product extends Model
 
     public function attributes()
     {
-        # code...
-        return $this->hasMany('App\ProductsAttribute', 'product_id');
+        return $this->hasMany(ProductsAttribute::class, 'product_id');
     }
 }
