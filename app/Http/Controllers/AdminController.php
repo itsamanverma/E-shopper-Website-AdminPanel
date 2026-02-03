@@ -41,7 +41,7 @@ class AdminController extends Controller
     }
 
     public function settings(){
-        return view('admin.settings');
+        return view('admin.settings_modern');
     }
 
     public function checkPassword( Request $request) {
