@@ -10,7 +10,7 @@ $mainCategories = Controller::mainCategories();
                     <span class="delivery-badge">Free Delivery On All Orders</span>
                 </div>
                 <div class="top-bar-right">
-                    <a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a>
+                    <a href="#"><i class="fa fa-phone"></i> +91 79743 73803</a>
                     <a href="#"><i class="fa fa-envelope"></i> info@domain.com</a>
                     <div class="social-links">
                         <a href="#"><i class="fa fa-facebook"></i></a>
@@ -76,6 +76,7 @@ $mainCategories = Controller::mainCategories();
         width: 100%;
         z-index: 1000;
         transition: all 0.3s ease;
+        position: relative;
     }
 
     .header-top-bar {
@@ -83,6 +84,23 @@ $mainCategories = Controller::mainCategories();
         color: #fff;
         padding: 8px 0;
         font-size: 13px;
+        position: relative;
+        z-index: 1001;
+    }
+
+    .header-main {
+        padding: 20px 0;
+        border-bottom: 1px solid #f0f0f0;
+        position: relative;
+        z-index: 999;
+        overflow: visible;
+    }
+
+    .header-main-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        overflow: visible;
     }
 
     .top-bar-inner {
@@ -122,12 +140,21 @@ $mainCategories = Controller::mainCategories();
     .header-main {
         padding: 20px 0;
         border-bottom: 1px solid #f0f0f0;
+        position: relative;
+        z-index: 999;
+        overflow: visible;
     }
 
     .header-main-inner {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        overflow: visible;
+    }
+
+    /* Container should allow overflow for dropdown */
+    .container, .container-fluid {
+        overflow: visible;
     }
 
     .logo-text {
@@ -177,6 +204,7 @@ $mainCategories = Controller::mainCategories();
 
     .has-dropdown {
         position: relative;
+        z-index: 100;
     }
 
     .dropdown-menu-modern {
@@ -185,13 +213,17 @@ $mainCategories = Controller::mainCategories();
         left: 0;
         background: #fff;
         min-width: 200px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         opacity: 0;
         visibility: hidden;
         transform: translateY(10px);
         transition: all 0.3s ease;
         padding: 15px 0;
         list-style: none;
+        z-index: 1000;
+        border-radius: 8px;
+        border: 1px solid #e0e0e0;
+        margin: 0;
     }
 
     .has-dropdown:hover .dropdown-menu-modern {
@@ -200,20 +232,38 @@ $mainCategories = Controller::mainCategories();
         transform: translateY(0);
     }
 
+    .dropdown-menu-modern li {
+        margin: 0;
+        padding: 0;
+    }
+
     .dropdown-menu-modern li a {
         display: block;
-        padding: 10px 25px;
+        padding: 12px 25px;
         color: #444;
         text-decoration: none;
         font-size: 14px;
         font-weight: 500;
         transition: all 0.3s;
+        border: none;
+        background: none;
     }
 
     .dropdown-menu-modern li a:hover {
-        background: #f9f9f9;
-        color: #ff0000;
+        background: #f8f9fa;
+        color: #FE980F;
         padding-left: 30px;
+    }
+
+    /* Ensure header navigation has proper positioning context */
+    .header-nav {
+        position: relative;
+        z-index: 99;
+    }
+
+    .main-menu {
+        position: relative;
+        z-index: 98;
     }
 
     .header-actions {
@@ -279,5 +329,61 @@ $mainCategories = Controller::mainCategories();
     @media (max-width: 991px) {
         .header-nav { display: none; }
         .header-top-bar { display: none; }
+        
+        .has-dropdown .dropdown-menu-modern {
+            position: static;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            box-shadow: none;
+            border: none;
+            background: #f8f9fa;
+        }
     }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle dropdown functionality
+    const dropdownItems = document.querySelectorAll('.has-dropdown');
+    
+    dropdownItems.forEach(function(item) {
+        const dropdown = item.querySelector('.dropdown-menu-modern');
+        
+        // Handle click on mobile/touch devices
+        item.addEventListener('click', function(e) {
+            if (window.innerWidth <= 991) {
+                e.preventDefault();
+                
+                // Toggle dropdown visibility
+                if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+                    dropdown.style.display = 'block';
+                } else {
+                    dropdown.style.display = 'none';
+                }
+            }
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!item.contains(e.target)) {
+                dropdown.style.display = '';
+            }
+        });
+    });
+    
+    // Handle search input expand/collapse
+    const searchInput = document.querySelector('.header-search-input');
+    if (searchInput) {
+        searchInput.addEventListener('focus', function() {
+            this.style.width = '250px';
+        });
+        
+        searchInput.addEventListener('blur', function() {
+            if (!this.value) {
+                this.style.width = '200px';
+            }
+        });
+    }
+});
+</script>
