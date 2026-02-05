@@ -16,15 +16,23 @@ class IndexController extends Controller
      * @return \Illuminate\Http\JsonResponse;
      */
     public function index(){
-        // Get featured products (limited to 8 for homepage)
-        $products = Product::orderby('id', 'DESC')->limit(8)->get();
+        // Get featured products (increased limit for homepage)
+        $products = Product::orderby('id', 'DESC')->limit(12)->get();
         
-        // Get all categories & sub Categories with product counts
+        // Get categories with their products for Hot Deals
+        $hotDealsCategories = Category::with(['products' => function($query) {
+                $query->orderby('id', 'DESC')->limit(4);
+            }])
+            ->where(['parent_id' => 0])
+            ->where('status', 1)
+            ->get();
+            
+        // Get all categories for the slider/menu
         $categories = Category::with('categories')
             ->withCount('products')
             ->where(['parent_id' => 0])
             ->get();
         
-        return view('index')->with(compact('products', 'categories'));
+        return view('index')->with(compact('products', 'categories', 'hotDealsCategories'));
     }
 }

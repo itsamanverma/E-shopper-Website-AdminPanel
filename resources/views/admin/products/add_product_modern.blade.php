@@ -248,4 +248,98 @@
             </div>
         </form>
     </div>
+
+    <script>
+        function previewImage(input) {
+            const uploadArea = document.getElementById('upload-area');
+            const previewContainer = document.getElementById('preview-container');
+            const previewImg = document.getElementById('preview-img');
+            const uploadText = document.getElementById('upload-text');
+            
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+                
+                // Validate file size (5MB max)
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('File size must be less than 5MB');
+                    input.value = '';
+                    return;
+                }
+                
+                // Validate file type
+                if (!file.type.match('image.*')) {
+                    alert('Please select a valid image file');
+                    input.value = '';
+                    return;
+                }
+                
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    previewImg.src = e.target.result;
+                    previewContainer.style.display = 'block';
+                    uploadText.textContent = 'Click to change image';
+                    uploadArea.style.borderColor = '#10b981';
+                    uploadArea.style.backgroundColor = '#f0fdf4';
+                }
+                
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function removePreview() {
+            const input = document.getElementById('image-input');
+            const previewContainer = document.getElementById('preview-container');
+            const uploadArea = document.getElementById('upload-area');
+            const uploadText = document.getElementById('upload-text');
+            
+            input.value = '';
+            previewContainer.style.display = 'none';
+            uploadText.textContent = 'Click to Upload Product Image';
+            uploadArea.style.borderColor = '#E5E7EB';
+            uploadArea.style.backgroundColor = 'transparent';
+        }
+
+        // Drag and drop functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const uploadArea = document.getElementById('upload-area');
+            
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                uploadArea.addEventListener(eventName, preventDefaults, false);
+            });
+
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                uploadArea.addEventListener(eventName, highlight, false);
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                uploadArea.addEventListener(eventName, unhighlight, false);
+            });
+
+            function highlight() {
+                uploadArea.style.borderColor = '#667eea';
+                uploadArea.style.backgroundColor = '#f0f4ff';
+            }
+
+            function unhighlight() {
+                uploadArea.style.borderColor = '#E5E7EB';
+                uploadArea.style.backgroundColor = 'transparent';
+            }
+
+            uploadArea.addEventListener('drop', handleDrop, false);
+
+            function handleDrop(e) {
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    document.getElementById('image-input').files = files;
+                    previewImage(document.getElementById('image-input'));
+                }
+            }
+        });
+    </script>
 </x-admin.layout-simple>

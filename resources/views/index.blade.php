@@ -23,12 +23,12 @@
             background: var(--white);
         }
 
-        /* Hero Slider Section */
+        /* Enhanced Hero Slider Section */
         .hero-slider {
             position: relative;
-            height: 600px;
+            height: 700px;
             overflow: hidden;
-            background: var(--bg-light);
+            background: #fff;
             margin-bottom: 60px;
         }
 
@@ -45,13 +45,16 @@
             width: 100%;
             height: 100%;
             opacity: 0;
-            transition: opacity 0.6s ease-in-out;
+            visibility: hidden;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             align-items: center;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
         }
 
         .slide.active {
             opacity: 1;
+            visibility: visible;
         }
 
         .slide-content {
@@ -59,82 +62,170 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 0 60px;
+            perspective: 1000px;
         }
 
         .slide-text {
             flex: 1;
-            max-width: 500px;
+            max-width: 600px;
+            z-index: 2;
         }
 
         .slide-label {
-            font-size: 12px;
-            letter-spacing: 2px;
+            font-size: 14px;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            color: var(--text-gray);
-            margin-bottom: 15px;
-            font-weight: 500;
+            color: #ff0000;
+            margin-bottom: 20px;
+            font-weight: 700;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.6s ease 0.2s;
+        }
+
+        .slide.active .slide-label {
+            transform: translateY(0);
+            opacity: 1;
         }
 
         .slide-title {
-            font-size: 4rem;
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 30px;
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 35px;
             color: var(--primary-black);
+            transform: translateY(40px);
+            opacity: 0;
+            transition: all 0.7s ease 0.4s;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .slide.active .slide-title {
+            transform: translateY(0);
+            opacity: 1;
         }
 
         .slide-btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
             background: var(--primary-black);
             color: var(--white);
-            padding: 15px 40px;
+            padding: 18px 45px;
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: 2px solid var(--primary-black);
+            transform: translateY(50px);
+            opacity: 0;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .slide.active .slide-btn {
+            transform: translateY(0);
+            opacity: 1;
+            transition-delay: 0.6s;
         }
 
         .slide-btn:hover {
-            background: var(--white);
+            background: transparent;
             color: var(--primary-black);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
             text-decoration: none;
         }
 
         .slide-image {
             flex: 1;
             text-align: right;
+            transform: scale(0.8) rotateY(-20deg);
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.5s;
+        }
+
+        .slide.active .slide-image {
+            transform: scale(1) rotateY(0);
+            opacity: 1;
         }
 
         .slide-image img {
             max-width: 100%;
             height: auto;
-            max-height: 500px;
+            max-height: 550px;
             object-fit: contain;
+            filter: drop-shadow(20px 20px 50px rgba(0,0,0,0.1));
+            animation: float 6s ease-in-out infinite;
         }
 
-        .slider-dots {
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .slider-controls {
             position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
+            bottom: 40px;
+            left: 60px;
             display: flex;
-            gap: 10px;
+            align-items: center;
+            gap: 30px;
             z-index: 10;
         }
 
+        .slider-dots {
+            display: flex;
+            gap: 12px;
+        }
+
         .dot {
-            width: 40px;
-            height: 3px;
-            background: rgba(0, 0, 0, 0.2);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.1);
             cursor: pointer;
             transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
 
         .dot.active {
-            background: var(--primary-black);
+            background: #ff0000;
+            transform: scale(1.3);
+            border-color: rgba(255, 0, 0, 0.2);
+        }
+
+        .slider-number {
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #000;
+        }
+
+        .slider-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: #ff0000;
+            width: 0;
+            z-index: 11;
+        }
+
+        /* Responsive Fixes */
+        @media (max-width: 1200px) {
+            .slide-title { font-size: 4rem; }
+        }
+        @media (max-width: 991px) {
+            .hero-slider { height: 600px; }
+            .slide-content { flex-direction: column; text-align: center; justify-content: center; padding: 0 30px; }
+            .slide-image { text-align: center; margin-top: 40px; }
+            .slide-image img { max-height: 350px; }
+            .slide-title { font-size: 3rem; }
+            .slider-controls { left: 50%; transform: translateX(-50%); }
         }
 
         /* Category Carousel Section */
@@ -614,11 +705,11 @@
                 <div class="slide-content">
                     <div class="slide-text">
                         <div class="slide-label">NEW ARRIVALS</div>
-                        <h1 class="slide-title">Premium Headphones Collection</h1>
+                        <h1 class="slide-title">Next Gen Smartphones</h1>
                         <a href="#featured" class="slide-btn">Shop Now</a>
                     </div>
                     <div class="slide-image">
-                        <img src="{{ asset('images/frontend_images/home/hero_headphones.png') }}" alt="Headphones" 
+                        <img src="{{ asset('images/backend_images/products/large/iphone15promax.jpg') }}" alt="iPhone 15 Pro Max" 
                              onerror="this.src='{{ asset('images/frontend_images/home/girl3.jpg') }}'">
                     </div>
                 </div>
@@ -626,12 +717,12 @@
             <div class="slide">
                 <div class="slide-content">
                     <div class="slide-text">
-                        <div class="slide-label">HOT DEALS</div>
-                        <h1 class="slide-title">Up to 60% Off</h1>
-                        <a href="#hot-deals" class="slide-btn">Shop Now</a>
+                        <div class="slide-label">WORK FROM ANYWHERE</div>
+                        <h1 class="slide-title">Pro Performance Laptops</h1>
+                        <a href="#featured" class="slide-btn">Shop Now</a>
                     </div>
                     <div class="slide-image">
-                        <img src="{{ asset('images/frontend_images/products/headphone2.png') }}" alt="Sale" 
+                        <img src="{{ asset('images/backend_images/products/large/macbookpro16.jpg') }}" alt="MacBook Pro" 
                              onerror="this.src='{{ asset('images/frontend_images/home/girl3.jpg') }}'">
                     </div>
                 </div>
@@ -639,22 +730,26 @@
             <div class="slide">
                 <div class="slide-content">
                     <div class="slide-text">
-                        <div class="slide-label">BEST SELLERS</div>
-                        <h1 class="slide-title">Wireless Freedom</h1>
+                        <div class="slide-label">PREMIUM AUDIO</div>
+                        <h1 class="slide-title">Ultimate Sound Experience</h1>
                         <a href="#featured" class="slide-btn">Shop Now</a>
                     </div>
                     <div class="slide-image">
-                        <img src="{{ asset('images/frontend_images/products/headphone1.png') }}" alt="Wireless" 
+                        <img src="{{ asset('images/backend_images/products/large/airpods_max.png') }}" alt="Premium Headphones" 
                              onerror="this.src='{{ asset('images/frontend_images/home/girl3.jpg') }}'">
                     </div>
                 </div>
             </div>
         </div>
-        <div class="slider-dots">
-            <div class="dot active" data-slide="0"></div>
-            <div class="dot" data-slide="1"></div>
-            <div class="dot" data-slide="2"></div>
+        <div class="slider-controls">
+            <div class="slider-number"><span id="currentSliderNum">01</span> / 03</div>
+            <div class="slider-dots">
+                <div class="dot active" data-slide="0"></div>
+                <div class="dot" data-slide="1"></div>
+                <div class="dot" data-slide="2"></div>
+            </div>
         </div>
+        <div class="slider-progress" id="sliderProgress"></div>
     </section>
 
     <div class="container">
@@ -671,19 +766,21 @@
                     @foreach($categories as $category)
                         <div class="category-item">
                             <div class="category-circle">
-                                @if(strtolower($category->category_name) == 'electronics' || strtolower($category->category_name) == 'headphone')
-                                    <img src="{{ asset('images/frontend_images/products/headphone3.png') }}" alt="{{ $category->category_name }}">
-                                @elseif(strtolower($category->category_name) == 'fashion' || strtolower($category->category_name) == 'clothing')
+                                @if($category->image)
+                                    <img src="{{ asset('images/backend_images/categories/small/'.$category->image) }}" alt="{{ $category->name }}">
+                                @elseif(strtolower($category->name) == 'electronics' || strtolower($category->name) == 'headphone')
+                                    <img src="{{ asset('images/frontend_images/products/headphone3.png') }}" alt="{{ $category->name }}">
+                                @elseif(strtolower($category->name) == 'fashion' || strtolower($category->name) == 'clothing')
                                     🎽
-                                @elseif(strtolower($category->category_name) == 'shoes' || strtolower($category->category_name) == 'footwear')
+                                @elseif(strtolower($category->name) == 'shoes' || strtolower($category->name) == 'footwear')
                                     👟
-                                @elseif(strtolower($category->category_name) == 'accessories')
+                                @elseif(strtolower($category->name) == 'accessories')
                                     👜
                                 @else
                                     📦
                                 @endif
                             </div>
-                            <div class="category-name">{{ $category->category_name }}</div>
+                            <div class="category-name">{{ $category->name }}</div>
                         </div>
                     @endforeach
                 </div>
@@ -697,65 +794,110 @@
         <section class="hot-deals-section" id="hot-deals">
             <div class="section-header">
                 <h2 class="section-title">Hot Deals</h2>
-            </div>
-            <div class="hot-deals-container">
-                <div class="sale-banner">
-                    <h3>Summer Sale</h3>
-                    <p>Up to 60% Off</p>
-                    <a href="#featured">VIEW ALL</a>
-                </div>
-                <div class="hot-deals-grid">
-                    @foreach($products->take(4) as $index => $product)
-                        <div class="product-card">
-                            @if($index % 2 == 0)
-                                <div class="product-badge">-{{ rand(20, 60) }}%</div>
-                            @else
-                                <div class="product-badge new">NEW</div>
-                            @endif
-                            <div class="wishlist-icon">
-                                <i class="fa fa-heart-o"></i>
-                            </div>
-                            <div class="product-image-wrapper">
-                                @if($product->image)
-                                    <img src="{{ asset('images/backend_images/products/small/'.$product->image) }}" alt="{{ $product->product_name }}">
-                                @else
-                                    <img src="{{ asset('images/frontend_images/products/headphone'.($index + 1).'.png') }}" alt="{{ $product->product_name }}"
-                                         onerror="this.style.background='#f3f4f6'">
-                                @endif
-                            </div>
-                            <div class="product-actions">
-                                <a href="{{ url('product/'.$product->id) }}" class="action-btn">Add to Cart</a>
-                                <button class="action-btn secondary">Quick View</button>
-                            </div>
-                            <div class="product-info">
-                                <h3 class="product-name">{{ $product->product_name }}</h3>
-                                <div class="product-rating">
-                                    <div class="stars">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
-                                    </div>
-                                    <span class="rating-count">({{ rand(50, 500) }})</span>
-                                </div>
-                                <div class="product-price sale">
-                                    <span>${{ number_format($product->price, 2) }}</span>
-                                    @if($index % 2 == 0)
-                                        <span class="original-price">${{ number_format($product->price * 1.5, 2) }}</span>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
+                <div class="category-tabs">
+                    <button class="tab-btn active" data-category="all">All Deals</button>
+                    @foreach($hotDealsCategories as $category)
+                        <button class="tab-btn" data-category="cat-{{ $category->id }}">{{ $category->name }}</button>
                     @endforeach
                 </div>
             </div>
+            
+            <div class="hot-deals-container-modern">
+                <div class="tab-content active" id="all">
+                    <div class="hot-deals-grid">
+                        @foreach($products->take(8) as $index => $product)
+                            @include('layouts.frontLayout.product_card', ['product' => $product, 'index' => $index])
+                        @endforeach
+                    </div>
+                </div>
+
+                @foreach($hotDealsCategories as $category)
+                    <div class="tab-content" id="cat-{{ $category->id }}">
+                        <div class="hot-deals-grid">
+                            @foreach($category->products as $index => $product)
+                                @include('layouts.frontLayout.product_card', ['product' => $product, 'index' => $index])
+                            @endforeach
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </section>
 
+        <style>
+            .category-tabs {
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+                margin-top: 20px;
+                flex-wrap: wrap;
+            }
+
+            .tab-btn {
+                background: transparent;
+                border: 1px solid var(--border-light);
+                padding: 8px 25px;
+                border-radius: 25px;
+                font-weight: 600;
+                font-size: 14px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                color: var(--text-gray);
+            }
+
+            .tab-btn.active, .tab-btn:hover {
+                background: var(--primary-black);
+                color: var(--white);
+                border-color: var(--primary-black);
+            }
+
+            .tab-content {
+                display: none;
+                animation: fadeIn 0.5s ease;
+            }
+
+            .tab-content.active {
+                display: block;
+            }
+
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+
+            .hot-deals-container-modern {
+                margin-top: 30px;
+            }
+        </style>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const tabBtns = document.querySelectorAll('.tab-btn');
+                const tabContents = document.querySelectorAll('.tab-content');
+
+                tabBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const category = btn.getAttribute('data-category');
+
+                        // Update buttons
+                        tabBtns.forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+
+                        // Update content
+                        tabContents.forEach(content => {
+                            content.classList.remove('active');
+                            if (content.id === category || (category === 'all' && content.id === 'all')) {
+                                content.classList.add('active');
+                            }
+                        });
+                    });
+                });
+            });
+        </script>
+        
         <!-- Promotional Banners -->
         <section class="promo-banners">
             <div class="promo-banner">
-                <img src="{{ asset('images/frontend_images/products/headphone5.png') }}" alt="Premium Audio"
+                <img src="{{ asset('images/backend_images/products/medium/bose_headphones.png') }}" alt="Premium Audio"
                      onerror="this.src='{{ asset('images/frontend_images/home/girl3.jpg') }}'">
                 <div class="promo-content">
                     <h3 class="promo-title">Premium Audio</h3>
@@ -764,7 +906,7 @@
                 </div>
             </div>
             <div class="promo-banner">
-                <img src="{{ asset('images/frontend_images/products/headphone7.png') }}" alt="Gaming Gear"
+                <img src="{{ asset('images/backend_images/products/medium/gaming_headset.png') }}" alt="Gaming Gear"
                      onerror="this.src='{{ asset('images/frontend_images/home/girl3.jpg') }}'">
                 <div class="promo-content">
                     <h3 class="promo-title">Gaming Gear</h3>
@@ -779,51 +921,9 @@
             <div class="featured-header">
                 <h2 class="section-title">Featured Products</h2>
             </div>
-            <div class="hot-deals-grid">
+            <div class="hot-deals-grid" id="featuredGrid">
                 @foreach($products as $index => $product)
-                    <div class="product-card">
-                        @if($index % 3 == 0)
-                            <div class="product-badge">-{{ rand(15, 50) }}%</div>
-                        @elseif($index % 3 == 1)
-                            <div class="product-badge new">NEW</div>
-                        @endif
-                        <div class="wishlist-icon">
-                            <i class="fa fa-heart-o"></i>
-                        </div>
-                        <div class="product-image-wrapper">
-                            @if($product->image)
-                                <img src="{{ asset('images/backend_images/products/small/'.$product->image) }}" alt="{{ $product->product_name }}">
-                            @else
-                                <img src="{{ asset('images/frontend_images/products/headphone'.(($index % 8) + 1).'.png') }}" alt="{{ $product->product_name }}"
-                                     onerror="this.style.background='#f3f4f6'">
-                            @endif
-                        </div>
-                        <div class="product-actions">
-                            <a href="{{ url('product/'.$product->id) }}" class="action-btn">Add to Cart</a>
-                            <button class="action-btn secondary">Quick View</button>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-name">{{ $product->product_name }}</h3>
-                            <div class="product-rating">
-                                <div class="stars">
-                                    @for($i = 0; $i < 5; $i++)
-                                        @if($i < 4)
-                                            <i class="fa fa-star"></i>
-                                        @else
-                                            <i class="fa fa-star-half-o"></i>
-                                        @endif
-                                    @endfor
-                                </div>
-                                <span class="rating-count">({{ rand(50, 500) }})</span>
-                            </div>
-                            <div class="product-price {{ $index % 3 == 0 ? 'sale' : '' }}">
-                                <span>${{ number_format($product->price, 2) }}</span>
-                                @if($index % 3 == 0)
-                                    <span class="original-price">${{ number_format($product->price * 1.4, 2) }}</span>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
+                    @include('layouts.frontLayout.product_card', ['product' => $product, 'index' => $index])
                 @endforeach
             </div>
             <button class="load-more-btn">Load More</button>
@@ -831,10 +931,23 @@
     </div>
 
     <script>
-        // Hero Slider
+        // Enhanced Hero Slider
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         const dots = document.querySelectorAll('.dot');
+        const currentNum = document.getElementById('currentSliderNum');
+        const progress = document.getElementById('sliderProgress');
+        let slideInterval;
+        const slideDuration = 6000;
+
+        function updateProgress() {
+            progress.style.transition = 'none';
+            progress.style.width = '0';
+            setTimeout(() => {
+                progress.style.transition = `width ${slideDuration}ms linear`;
+                progress.style.width = '100%';
+            }, 10);
+        }
 
         function showSlide(n) {
             slides.forEach(slide => slide.classList.remove('active'));
@@ -843,14 +956,23 @@
             currentSlide = (n + slides.length) % slides.length;
             slides[currentSlide].classList.add('active');
             dots[currentSlide].classList.add('active');
+            
+            // Update number display
+            currentNum.textContent = (currentSlide + 1).toString().padStart(2, '0');
+            
+            updateProgress();
+            
+            // Reset interval
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, slideDuration);
         }
 
         function nextSlide() {
             showSlide(currentSlide + 1);
         }
 
-        // Auto-play slider
-        setInterval(nextSlide, 5000);
+        // Initialize Slider
+        showSlide(0);
 
         // Dot navigation
         dots.forEach((dot, index) => {
@@ -863,15 +985,20 @@
         const rightArrow = document.querySelector('.carousel-arrow.right');
         let scrollPosition = 0;
 
-        rightArrow.addEventListener('click', () => {
-            scrollPosition += 300;
-            track.style.transform = `translateX(-${scrollPosition}px)`;
-        });
+        if (track && rightArrow && leftArrow) {
+            rightArrow.addEventListener('click', () => {
+                scrollPosition += 300;
+                if (scrollPosition > track.scrollWidth - track.parentElement.clientWidth) {
+                    scrollPosition = track.scrollWidth - track.parentElement.clientWidth;
+                }
+                track.style.transform = `translateX(-${scrollPosition}px)`;
+            });
 
-        leftArrow.addEventListener('click', () => {
-            scrollPosition = Math.max(0, scrollPosition - 300);
-            track.style.transform = `translateX(-${scrollPosition}px)`;
-        });
+            leftArrow.addEventListener('click', () => {
+                scrollPosition = Math.max(0, scrollPosition - 300);
+                track.style.transform = `translateX(-${scrollPosition}px)`;
+            });
+        }
 
         // Wishlist Toggle
         document.querySelectorAll('.wishlist-icon').forEach(icon => {
@@ -883,18 +1010,29 @@
                     heart.classList.add('fa-heart');
                     this.style.background = '#ff0000';
                     this.style.color = '#ffffff';
+                    this.style.borderColor = '#ff0000';
                 } else {
                     heart.classList.remove('fa-heart');
                     heart.classList.add('fa-heart-o');
                     this.style.background = '#ffffff';
                     this.style.color = '#000000';
+                    this.style.borderColor = 'var(--border-light)';
                 }
             });
         });
 
-        // Load More Button
-        document.querySelector('.load-more-btn').addEventListener('click', function() {
-            alert('Load more functionality would fetch additional products via AJAX');
-        });
+        // Load More Button AJAX Placeholder
+        const loadMoreBtn = document.querySelector('.load-more-btn');
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', function() {
+                this.textContent = 'Loading...';
+                this.classList.add('loading');
+                setTimeout(() => {
+                    this.textContent = 'No More Products';
+                    this.style.opacity = '0.5';
+                    this.style.pointerEvents = 'none';
+                }, 1500);
+            });
+        }
     </script>
 @endsection

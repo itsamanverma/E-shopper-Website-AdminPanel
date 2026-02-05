@@ -165,7 +165,7 @@ class ProductsController extends Controller
                 }
     			$categories_dropdown .= "<option value = '".$sub_cat->id."' ".$selected.">&nbsp;--&nbsp;".$sub_cat->name."</option>";            }
         }
-        return view('admin.products.edit_product')->with(compact('productDetails','categories_dropdown'));
+        return view('admin.products.edit_product_modern')->with(compact('productDetails','categories_dropdown'));
     }
     /**
      * viewProduct a newly created resource in storage.

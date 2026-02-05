@@ -56,7 +56,7 @@ class CategoryController extends Controller
         }
         $categoryDetails = Category::where(['id' => $id])->first();
         $levels = Category::where(['parent_id'=>0])->get();
-        return view('admin.categories.edit_category')->with(compact('categoryDetails','levels'));
+        return view('admin.categories.edit_category_modern')->with(compact('categoryDetails','levels'));
     }
 
     public function deleteCategory( $id = null)
@@ -69,7 +69,7 @@ class CategoryController extends Controller
         }
     }
     public function viewCategories() {
-        $categories = Category::get();
+        $categories = Category::withCount('products')->get();
         // echo "<pre>"; print_r($categories); die;
         return view('admin.categories.view_categories_modern')->with(compact('categories'));
     }
